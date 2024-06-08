@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.ChiTietSanPhamActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ToolbarChitietSanPham"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#00BCD4"
+        app:title="Chi Tiết Sản Phẩm"
+        app:titleTextColor="@color/black" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="191dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageviewChiTietSanPham"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    android:src="@mipmap/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textviewTenChiTietSanPham"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Điện thoại Iphone"
+                        android:textColor="#111"
+                        android:textSize="23dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textviewGiaChiTietSanPham"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="1.700.000đ"
+                        android:textColor="#9C27B0"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinnerChiTietSanPham"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginVertical="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/spinner"
+                        android:padding="15dp"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Mô Tả"
+                    android:textColor="#E91E63"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+                <com.borjabravo.readmoretextview.ReadMoreTextView
+                    android:id="@+id/textviewMoTaChiTietSanPham"
+                    android:layout_width="365dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:paddingBottom="10dp"
+                    android:text="Khi hiểu đối tượng của mình là ai, bạn dễ dàng định hình tông giọng tương thích. Tông giọng phù hợp giúp bạn gần gũi, thân thiết với khách hàng hơn. Cũng giống như cá nhân, khi tiếp xúc một người thân thiện cũng khiến bạn cởi mở, bắt chuyện dễ hơn.
+
+Ngoài ra, tông giọng còn thể hiện thái độ của bạn với khách hàng. Một thái độ trân trọng, hào hứng… sẽ dễ hấp dẫn người mua hơn. Bên cạnh đó, tông giọng riêng, gây ấn tượng sẽ giúp khách hàng nhớ về doanh nghiệp lâu hơn.
+
+Lưu ý rằng, đừng bao giờ khen, tâng bốc doanh nghiệp mình là số 1… Thay vào đó, hãy sử dụng giọng điệu để mô tả điều này. Khách hàng sẽ cảm nhận giá trị bạn mang lại cho họ thông qua giọng điệu được thể hiện."
+                    android:textColor="#111"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    app:colorClickableText="#FFC107"
+                    app:trimCollapsedText="ẩn bớt"
+                    app:trimExpandedText="xem thêm"
+                    app:trimLength="500"
+                    app:trimMode="trimModeLength" />
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+
+                <TextView
+                    android:id="@+id/ThemGioHangChiTietSanPham"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50px"
+                    android:background="#01C609"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Thêm vào giỏ"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
