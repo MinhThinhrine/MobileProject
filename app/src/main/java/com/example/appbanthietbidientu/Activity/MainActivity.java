@@ -2,6 +2,7 @@ package com.example.appbanthietbidientu.Activity;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.res.ResourcesCompat;
@@ -152,6 +154,7 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.ECLAIR_MR1)
     private void ActionViewFlip() {
         ArrayList<String> mangQuangCao=new ArrayList<>();
         mangQuangCao.add("https://image-us.24h.com.vn/upload/3-2020/images/2020-07-26/Top-dien-thoai-co-camera-sau-hinh-chu-L-chup-anh-sieu-dinh-1-1595762816-463-width660height440.jpg");
