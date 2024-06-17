@@ -1,30 +1,14 @@
 package com.example.appbanthietbidientu.model;
 
 public class User {
-    String tenkhachhang;
-    int sodienthoai;
     String email;
+    String pass;
+    int id;
 
-    public User(String tenkhachhang, int sodienthoai, String email) {
-        this.tenkhachhang = tenkhachhang;
-        this.sodienthoai = sodienthoai;
+    public User(String email, String pass, int id) {
         this.email = email;
-    }
-
-    public String getTenkhachhang() {
-        return tenkhachhang;
-    }
-
-    public void setTenkhachhang(String tenkhachhang) {
-        this.tenkhachhang = tenkhachhang;
-    }
-
-    public int getSodienthoai() {
-        return sodienthoai;
-    }
-
-    public void setSodienthoai(int sodienthoai) {
-        this.sodienthoai = sodienthoai;
+        this.pass = pass;
+        this.id = id;
     }
 
     public String getEmail() {
@@ -33,5 +17,21 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

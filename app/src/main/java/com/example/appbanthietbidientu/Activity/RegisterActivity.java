@@ -1,6 +1,6 @@
 package com.example.appbanthietbidientu.Activity;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -9,23 +9,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appbanthietbidientu.R;
-import com.example.appbanthietbidientu.response.SignInResponse;
-import com.example.appbanthietbidientu.ultil.ApiSp;
-
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.example.appbanthietbidientu.model.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class RegisterActivity extends AppCompatActivity {
     TextView register;
     EditText account, password, passwordRepeat;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String strAccount = account.getText().toString();
+                String strAccount = account.getText().toString().trim();
                 String strPassword = password.getText().toString();
                 String strPasswordRepeat = passwordRepeat.getText().toString();
 
@@ -54,32 +54,66 @@ public class RegisterActivity extends AppCompatActivity {
                 } else if (!strPassword.equals(strPasswordRepeat)) {
                     Toast.makeText(RegisterActivity.this, "Mật khẩu nhập lại không đúng", Toast.LENGTH_SHORT).show();
                 } else {
-                    RequestBody requestBodyEmail = RequestBody.create(MediaType.parse("multipart/form-data"), strAccount);
-                    RequestBody requestBodyPassword = RequestBody.create(MediaType.parse("multipart/form-data"), strPassword);
+                    // Khởi tạo Firebase
+                    FirebaseDatabase firebase = FirebaseDatabase.getInstance();
+                    DatabaseReference ref = firebase.getReference("User");
 
-                    ApiSp.apiLogin.confirmRegister(requestBodyEmail, requestBodyPassword)
-                            .enqueue(new Callback<SignInResponse>() {
-                                @Override
-                                public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
-                                    if (response.body() != null) {
-                                        switch (response.body().statusCode) {
-                                            case 200:
-                                                Toast.makeText(getApplicationContext(), "Đăng kí tài khoản thành công", Toast.LENGTH_SHORT).show();
-                                                onBackPressed();
-                                                break;
-                                            case 400:
-                                                Toast.makeText(getApplicationContext(), "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
-                                                onBackPressed();
-                                                break;
-                                        }
-                                    }
+                    // Lấy ID của user mới nhất từ Firebase
+                    ref.orderByKey().limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            // Kiểm tra xem có dữ liệu trả về không
+                            if (snapshot.exists()) {
+                                // Lặp qua tất cả các children để lấy ID của user cuối cùng
+                                String latestUserId = "";
+                                for (DataSnapshot child : snapshot.getChildren()) {
+                                    latestUserId = child.getKey();
                                 }
 
-                                @Override
-                                public void onFailure(Call<SignInResponse> call, Throwable t) {
-                                    Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                                // Chuyển đổi latestUserId thành kiểu int (nếu cần)
+                                int newUserId = Integer.parseInt(latestUserId) + 1;
+
+                                // Tạo đối tượng User
+                                User user = new User(strAccount, strPassword, newUserId);
+
+                                ref.child(String.valueOf(newUserId)).setValue(user)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(RegisterActivity.this, "Đã đăng kí tài khoản thành công", Toast.LENGTH_SHORT).show();
+                                                    account.setText("");
+                                                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                                                } else {
+                                                    Toast.makeText(RegisterActivity.this, "Lỗi khi lưu user", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                            } else {
+                                int newUserId = 1;
+
+                                User user = new User(strAccount, strPassword, newUserId);
+
+                                ref.child(String.valueOf(newUserId)).setValue(user)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(RegisterActivity.this, "Đã lưu user vào Firebase", Toast.LENGTH_SHORT).show();
+                                                    account.setText(""); // Xóa EditText sau khi lưu thành công
+                                                } else {
+                                                    Toast.makeText(RegisterActivity.this, "Lỗi khi lưu user", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(RegisterActivity.this, "Lỗi khi lấy dữ liệu từ Firebase", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         });

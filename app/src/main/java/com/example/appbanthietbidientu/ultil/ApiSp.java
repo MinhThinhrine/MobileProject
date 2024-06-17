@@ -26,7 +26,7 @@ public interface ApiSp {
 
     ApiSp apiLogin = new Retrofit.Builder()
 //            .baseUrl("https://firebasestorage.googleapis.com/v0/b/realtime-64f58.appspot.com/o/")
-            .baseUrl("http://192.168.1.246/")
+            .baseUrl("http://192.168.1.10/hocadr/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiSp.class);
