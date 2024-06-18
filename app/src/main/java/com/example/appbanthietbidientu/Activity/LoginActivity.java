@@ -10,11 +10,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.response.SignInResponse;
 import com.example.appbanthietbidientu.ultil.ApiSp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -40,7 +47,8 @@ public class LoginActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
         login = findViewById(R.id.login);
         registerAccount = findViewById(R.id.register_account);
-
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("User");
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,39 +62,37 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (strPassword.length() < 6) {
                     Toast.makeText(getApplicationContext(), "Mật khẩu phải có ít nhất 6 kí tự", Toast.LENGTH_SHORT).show();
                 } else {
-                    RequestBody requestBodyEmail = RequestBody.create(MediaType.parse("multipart/form-data"), strEmail);
-                    RequestBody requestBodyPassword = RequestBody.create(MediaType.parse("multipart/form-data"), strPassword);
+                    Query emailQuery = usersRef.orderByChild("email").equalTo(strEmail);
+                    emailQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()){
+                                DataSnapshot userSnapshot = snapshot.getChildren().iterator().next();
+                                String userId = userSnapshot.getKey();
+                                String storedPassword = userSnapshot.child("pass").getValue(String.class);
 
-                    ApiSp.apiLogin.confirmLogin(requestBodyEmail, requestBodyPassword)
-                            .enqueue(new Callback<SignInResponse>() {
-                                @Override
-                                public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
-                                    if (response.body() != null) {
-                                        switch (response.body().statusCode) {
-                                            case 200:
-                                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                                intent.putExtra("email", strEmail);
-                                                startActivity(intent);
-                                                finish();
-                                                break;
-                                            case 401:
-                                                Toast.makeText(getApplicationContext(), "Tài khoản hoặc mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
-                                                break;
-                                            default:
-                                                Toast.makeText(getApplicationContext(), "Lỗi không xác định", Toast.LENGTH_SHORT).show();
-                                                break;
-                                        }
-                                    } else {
-                                        Toast.makeText(getApplicationContext(), "Không có phản hồi từ máy chủ", Toast.LENGTH_SHORT).show();
-                                    }
+                                if(storedPassword!=null && storedPassword.equals(strPassword)){
+                                    Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    intent.putExtra("user_id", userId);
+                                    intent.putExtra("email", strEmail);
+                                    startActivity(intent);
+                                    finish();
+                                }else{
+                                    Toast.makeText(getApplicationContext(), "Mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
                                 }
+                            }else {
+                                Toast.makeText(LoginActivity.this, "Tài khoản không tồn tại", Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
-                                @Override
-                                public void onFailure(Call<SignInResponse> call, Throwable t) {
-                                    Toast.makeText(getApplicationContext(), "Lỗi mạng: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(getApplicationContext(), "Đã xảy ra lỗi: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
+
             }
         });
 

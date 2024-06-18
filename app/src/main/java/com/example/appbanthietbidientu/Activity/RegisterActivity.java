@@ -74,7 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 int newUserId = Integer.parseInt(latestUserId) + 1;
 
                                 // Tạo đối tượng User
-                                User user = new User(strAccount, strPassword, newUserId);
+                                User user = new User(strAccount, strPassword, newUserId,"user");
 
                                 ref.child(String.valueOf(newUserId)).setValue(user)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -92,15 +92,17 @@ public class RegisterActivity extends AppCompatActivity {
                             } else {
                                 int newUserId = 1;
 
-                                User user = new User(strAccount, strPassword, newUserId);
+                                User user = new User(strAccount, strPassword, newUserId,"user");
 
                                 ref.child(String.valueOf(newUserId)).setValue(user)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Toast.makeText(RegisterActivity.this, "Đã lưu user vào Firebase", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(RegisterActivity.this, "Đã đăng kí tài khoản thành công", Toast.LENGTH_SHORT).show();
                                                     account.setText(""); // Xóa EditText sau khi lưu thành công
+                                                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+
                                                 } else {
                                                     Toast.makeText(RegisterActivity.this, "Lỗi khi lưu user", Toast.LENGTH_SHORT).show();
                                                 }

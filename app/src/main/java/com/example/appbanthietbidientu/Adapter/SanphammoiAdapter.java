@@ -46,7 +46,7 @@ public class SanphammoiAdapter extends RecyclerView.Adapter<SanphammoiAdapter.Sa
         Sanpham sanpham = sanphamList.get(position);
         holder.txtTensp.setText(sanpham.getTensanpham());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        holder.txtGiasp.setText("Giá: " + decimalFormat.format(sanpham.getGiasanpham()) + "₫");
+        holder.txtGiasp.setText("Giá: " + decimalFormat.format(Integer.parseInt(sanpham.getGiasanpham())) + "₫");
         Typeface semibold = ResourcesCompat.getFont(context,R.font.svn_gilroy_semibold);
         holder.txtTensp.setTypeface(semibold);
 

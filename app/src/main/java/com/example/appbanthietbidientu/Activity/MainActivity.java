@@ -34,9 +34,15 @@ import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.model.GioHang;
 import com.example.appbanthietbidientu.model.Loaisp;
 import com.example.appbanthietbidientu.model.Sanpham;
+import com.example.appbanthietbidientu.model.Sanphammoi;
 import com.example.appbanthietbidientu.ultil.ApiSp;
 import com.example.appbanthietbidientu.ultil.CheckConnect;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -132,23 +138,30 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void GetDuLieusp() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference();
         loadMain.setVisibility(View.VISIBLE);
-        ApiSp.apiDevice.getListsp("media", "04505275-acd8-47cb-9bdb-5885d1fbaeff").enqueue(new Callback<List<Sanpham>>() {
+
+        databaseReference.child("sanphammoi").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
-                sanphamArrayList= (ArrayList<Sanpham>) response.body();
-                SanphammoiAdapter sanphamAdapter=new SanphammoiAdapter(sanphamArrayList, getApplicationContext());
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                sanphamArrayList.clear();
+                for(DataSnapshot nap : snapshot.getChildren()){
+                    Sanpham sanphammoi = nap.getValue(Sanpham.class);
+                    sanphamArrayList.add(sanphammoi);
+                }
+                SanphammoiAdapter sanphamAdapter = new SanphammoiAdapter(sanphamArrayList, getApplicationContext());
                 listSanPhamMoi.setAdapter(sanphamAdapter);
 
-                //Set sản phẩm mới
-                GridLayoutManager gridLayoutManager=new GridLayoutManager(getApplicationContext(),2);
+                listSanPhamMoi.setAdapter(sanphamAdapter);
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                 listSanPhamMoi.setLayoutManager(gridLayoutManager);
                 loadMain.setVisibility(View.INVISIBLE);
             }
 
             @Override
-            public void onFailure(Call<List<Sanpham>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error"+error.getMessage(),Toast.LENGTH_SHORT).show();
                 loadMain.setVisibility(View.INVISIBLE);
             }
         });
@@ -158,7 +171,7 @@ public class MainActivity extends AppCompatActivity{
     private void ActionViewFlip() {
         ArrayList<String> mangQuangCao=new ArrayList<>();
         mangQuangCao.add("https://image-us.24h.com.vn/upload/3-2020/images/2020-07-26/Top-dien-thoai-co-camera-sau-hinh-chu-L-chup-anh-sieu-dinh-1-1595762816-463-width660height440.jpg");
-        mangQuangCao.add("https://tapchicongthuong.vn/images/19/9/20/toc-tien-oppo.jpg");
+        mangQuangCao.add("https://genk.mediacdn.vn/2019/6/22/img20180727113150419-15611863490181429886619.jpg");
         mangQuangCao.add("https://cdn.sforum.vn/sforum/wp-content/uploads/2020/08/OPPO-F17-1.jpg");
         mangQuangCao.add("https://quanlykho.vn/wp-content/uploads/2022/08/img_63083bb914d24.png");
 
