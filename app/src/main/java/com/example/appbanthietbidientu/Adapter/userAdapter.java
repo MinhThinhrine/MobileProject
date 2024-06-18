@@ -3,6 +3,7 @@ package com.example.appbanthietbidientu.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.model.User;
@@ -28,9 +29,18 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.userHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull userHolder holder, int position) {
-        User user = userList.get(position);
+        final User user = userList.get(position);
         holder.id.setText("Id: "+user.getId());
         holder.email.setText(user.getEmail());
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OnclickgotoUpdateUser(user);
+            }
+        });
+    }
+    private void OnclickgotoUpdateUser(User user){
+
     }
 
     @Override
@@ -39,9 +49,11 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.userHolder>{
     }
 
     public class userHolder extends RecyclerView.ViewHolder{
+        LinearLayout linearLayout;
         private TextView id,email;
         public userHolder(@NonNull View itemView) {
             super(itemView);
+            linearLayout = itemView.findViewById(R.id.layout_user);
             id = itemView.findViewById(R.id.iduser);
             email = itemView.findViewById(R.id.emaiuser);
         }

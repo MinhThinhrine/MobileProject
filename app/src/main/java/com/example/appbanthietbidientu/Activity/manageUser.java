@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appbanthietbidientu.Adapter.userAdapter;
@@ -33,6 +34,7 @@ public class manageUser extends AppCompatActivity {
     private List<User> userList;
     private userAdapter userAdapter;
     Toolbar toolbar;
+    TextView txview;
     LinearLayoutManager linearLayoutManager;
     Button buttonadd;
     SharedPreferences sharedPreferences;
@@ -45,7 +47,6 @@ public class manageUser extends AppCompatActivity {
             anhxa();
             back();
             add();
-//            LoadmoreData();
         }else {
             CheckConnect.ShowToast_Short(getApplicationContext(),"Error Connect Internet");
         }
@@ -90,6 +91,7 @@ public class manageUser extends AppCompatActivity {
                     linearLayoutManager = new LinearLayoutManager(manageUser.this);
                     recyclerView.setLayoutManager(linearLayoutManager);
                     recyclerView.setAdapter(userAdapter);
+                    txview.setText("Số người dùng: "+userList.size());
                 }else{
                     Toast.makeText(manageUser.this, "Không có người dùng nào tồn tại", Toast.LENGTH_SHORT).show();
                 }
@@ -104,6 +106,7 @@ public class manageUser extends AppCompatActivity {
     }
 
     private void anhxa() {
+        txview = findViewById(R.id.numuser);
         buttonadd = findViewById(R.id.them);
         recyclerView = findViewById(R.id.listUser);
         toolbar = findViewById(R.id.toolbar);
