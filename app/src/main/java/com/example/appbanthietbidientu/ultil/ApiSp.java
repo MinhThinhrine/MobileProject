@@ -24,37 +24,37 @@ public interface ApiSp {
     //https://firebasestorage.googleapis.com/v0/b/realtime-64f58.appspot.com/o/dienthoai.json?alt=media&token=d14eb726-c131-4860-a3e4-266d0aa206ed
     //https://firebasestorage.googleapis.com/v0/b/realtime-64f58.appspot.com/o/laptop.json?alt=media&token=4452ff5b-1980-4626-b646-5fa4c03159d0
 
-    ApiSp apiLogin = new Retrofit.Builder()
-//            .baseUrl("https://firebasestorage.googleapis.com/v0/b/realtime-64f58.appspot.com/o/")
-            .baseUrl("http://192.168.1.10/hocadr/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-            .create(ApiSp.class);
+//    ApiSp apiLogin = new Retrofit.Builder()
+////            .baseUrl("https://firebasestorage.googleapis.com/v0/b/realtime-64f58.appspot.com/o/")
+//            .baseUrl("http://192.168.1.10/hocadr/")
+//            .addConverterFactory(GsonConverterFactory.create(gson))
+//            .build()
+//            .create(ApiSp.class);
     ApiSp apiDevice = new Retrofit.Builder()
             .baseUrl("https://firebasestorage.googleapis.com/v0/b/realtime-64f58.appspot.com/o/")
 //            .baseUrl("http://192.168.1.246/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiSp.class);
-
-    @Multipart
-    @POST("register.php")
-    Call<SignInResponse> confirmRegister(@Part(Const.KEY_EMAIL) RequestBody email,
-                                         @Part(Const.KEY_PASSWORD) RequestBody password);
-
-    @Multipart
-    @POST("login.php")
-    Call<SignInResponse> confirmLogin(@Part(Const.KEY_EMAIL) RequestBody email,
-                                         @Part(Const.KEY_PASSWORD) RequestBody password);
-
-    @GET("sanphammoinhat.json")
-    Call<List<Sanpham>> getListsp(@Query("alt") String alt, @Query("token") String token);
-
-    @GET("dienthoai.json")
-    Call<List<Sanpham>> getlistDienThoai(@Query("alt") String alt, @Query("token") String token);
-
-    @GET("laptop.json")
-    Call<List<Sanpham>> getlistLapTop(@Query("alt") String alt, @Query("token") String token);
+//
+//    @Multipart
+//    @POST("register.php")
+//    Call<SignInResponse> confirmRegister(@Part(Const.KEY_EMAIL) RequestBody email,
+//                                         @Part(Const.KEY_PASSWORD) RequestBody password);
+//
+//    @Multipart
+//    @POST("login.php")
+//    Call<SignInResponse> confirmLogin(@Part(Const.KEY_EMAIL) RequestBody email,
+//                                         @Part(Const.KEY_PASSWORD) RequestBody password);
+//
+//    @GET("sanphammoinhat.json")
+//    Call<List<Sanpham>> getListsp(@Query("alt") String alt, @Query("token") String token);
+//
+//    @GET("dienthoai.json")
+//    Call<List<Sanpham>> getlistDienThoai(@Query("alt") String alt, @Query("token") String token);
+//
+//    @GET("laptop.json")
+//    Call<List<Sanpham>> getlistLapTop(@Query("alt") String alt, @Query("token") String token);
 
     @Multipart
     @POST("thongtinkhachhang.php")

@@ -9,7 +9,7 @@
     android:gravity="center">
 
     <ImageView
-        android:layout_width="142dp"
-        android:layout_height="170dp"
-        app:srcCompat="@drawable/googleg_standard_color_18" />
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:srcCompat="@drawable/picture_intro" />
 </LinearLayout>

@@ -97,7 +97,7 @@ public class SanphamAdapter extends BaseAdapter implements Filterable {
         Sanpham dienThoai=dienThoaiList.get(i);
         viewHolder.tenDienThoai.setText(dienThoai.getTensanpham());
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
-        viewHolder.giaDienThoai.setText("Giá: "+decimalFormat.format(dienThoai.getGiasanpham())+"₫");
+        viewHolder.giaDienThoai.setText("Giá: "+decimalFormat.format(Integer.parseInt(dienThoai.getGiasanpham()))+"₫");
         viewHolder.motaDienThoai.setMaxLines(2);
         viewHolder.motaDienThoai.setEllipsize(TextUtils.TruncateAt.END);
         viewHolder.motaDienThoai.setText(dienThoai.getMotasanpham());

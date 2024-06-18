@@ -3,14 +3,17 @@ package com.example.appbanthietbidientu.model;
 import java.io.Serializable;
 
 public class Sanpham implements Serializable {
-    int id;
+    String id;
     String tensanpham;
-    int giasanpham;
+    String giasanpham;
     String hinhanhsanpham;
     String motasanpham;
-    int idsanpham;
+    String idsanpham;
 
-    public Sanpham(int id, String tensanpham, int giasanpham, String hinhanhsanpham, String motasanpham, int idsanpham) {
+    public Sanpham() {
+    }
+
+    public Sanpham(String id, String tensanpham, String giasanpham, String hinhanhsanpham, String motasanpham, String idsanpham) {
         this.id = id;
         this.tensanpham = tensanpham;
         this.giasanpham = giasanpham;
@@ -19,11 +22,11 @@ public class Sanpham implements Serializable {
         this.idsanpham = idsanpham;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -35,11 +38,11 @@ public class Sanpham implements Serializable {
         this.tensanpham = tensanpham;
     }
 
-    public int getGiasanpham() {
+    public String getGiasanpham() {
         return giasanpham;
     }
 
-    public void setGiasanpham(int giasanpham) {
+    public void setGiasanpham(String giasanpham) {
         this.giasanpham = giasanpham;
     }
 
@@ -59,11 +62,11 @@ public class Sanpham implements Serializable {
         this.motasanpham = motasanpham;
     }
 
-    public int getIdsanpham() {
+    public String getIdsanpham() {
         return idsanpham;
     }
 
-    public void setIdsanpham(int idsanpham) {
+    public void setIdsanpham(String idsanpham) {
         this.idsanpham = idsanpham;
     }
 }

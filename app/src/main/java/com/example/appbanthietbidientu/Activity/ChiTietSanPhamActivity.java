@@ -55,24 +55,24 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
                     boolean exits=false;
 
                     for (int i=0;i < MainActivity.gioHangArrayList.size();i++) {
-                        if (MainActivity.gioHangArrayList.get(i).getIdsp() == sanpham.getId()) {
+                        if (MainActivity.gioHangArrayList.get(i).getIdsp() ==  Integer.parseInt(sanpham.getId())) {
                             MainActivity.gioHangArrayList.get(i).setSoluongsp(MainActivity.gioHangArrayList.get(i).getSoluongsp() + sl);
                             if(MainActivity.gioHangArrayList.get(i).getSoluongsp() >= 10){
                                 MainActivity.gioHangArrayList.get(i).setSoluongsp(10);
                             }
-                            MainActivity.gioHangArrayList.get(i).setGiasp((long) sanpham.getGiasanpham() * MainActivity.gioHangArrayList.get(i).getSoluongsp());
+                            MainActivity.gioHangArrayList.get(i).setGiasp((long) Integer.parseInt(sanpham.getGiasanpham()) * MainActivity.gioHangArrayList.get(i).getSoluongsp());
                             exits=true;
                         }
                     }
                     if(!exits){
                         int soluong=Integer.parseInt(spinner.getSelectedItem().toString());
-                        long giaMoi= (long) soluong * sanpham.getGiasanpham();
-                        MainActivity.gioHangArrayList.add(new GioHang(sanpham.getId(), sanpham.getTensanpham(), giaMoi, sanpham.getHinhanhsanpham(), soluong));
+                        long giaMoi= (long) soluong * Integer.parseInt(sanpham.getGiasanpham());
+                        MainActivity.gioHangArrayList.add(new GioHang(Integer.parseInt(sanpham.getId()), sanpham.getTensanpham(), giaMoi, sanpham.getHinhanhsanpham(), soluong));
                     }
                 }else{
                     int soluong=Integer.parseInt(spinner.getSelectedItem().toString());
-                    long giaMoi= (long) soluong * sanpham.getGiasanpham();
-                    MainActivity.gioHangArrayList.add(new GioHang(sanpham.getId(), sanpham.getTensanpham(), giaMoi, sanpham.getHinhanhsanpham(), soluong));
+                    long giaMoi= (long) soluong * Integer.parseInt(sanpham.getGiasanpham());
+                    MainActivity.gioHangArrayList.add(new GioHang(Integer.parseInt(sanpham.getId()), sanpham.getTensanpham(), giaMoi, sanpham.getHinhanhsanpham(), soluong));
                 }
                 Intent intent=new Intent(getApplicationContext(),GioHangActivity.class);
                 startActivity(intent);
@@ -106,7 +106,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
         tenChiTiet.setText(sanpham.getTensanpham());
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
-        giaChiTiet.setText(String.format("Giá: %s₫", decimalFormat.format(sanpham.getGiasanpham())));
+        giaChiTiet.setText(String.format("Giá: %s₫", decimalFormat.format(Integer.parseInt( sanpham.getGiasanpham()))));
         motaChiTiet.setText(sanpham.getMotasanpham());
         Typeface regular = ResourcesCompat.getFont(ChiTietSanPhamActivity.this,R.font.svn_gilroy_regular);
         motaChiTiet.setTypeface(regular);

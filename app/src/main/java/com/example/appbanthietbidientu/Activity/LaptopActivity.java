@@ -19,6 +19,11 @@ import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.model.Sanpham;
 import com.example.appbanthietbidientu.ultil.ApiSp;
 import com.example.appbanthietbidientu.ultil.BaseFunctionActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,21 +60,47 @@ public class LaptopActivity extends BaseFunctionActivity {
 
     private void getData() {
         loadLapTop.setVisibility(View.VISIBLE);
-        ApiSp.apiDevice.getlistLapTop("media", "4452ff5b-1980-4626-b646-5fa4c03159d0").enqueue(new Callback<List<Sanpham>>() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference();
+        databaseReference.child("laptop").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
-                laptopArrayList= (ArrayList<Sanpham>) response.body();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                laptopArrayList.clear();
+                if(snapshot.exists()){
+                    for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        Sanpham sanpham = dataSnapshot.getValue(Sanpham.class);
+                        laptopArrayList.add(sanpham);
                 laptopAdapter=new SanphamAdapter(laptopArrayList,getApplicationContext());
                 listViewLapTop.setAdapter(laptopAdapter);
                 loadLapTop.setVisibility(View.INVISIBLE);
+                    }
+                }else{
+                    Toast.makeText(LaptopActivity.this, "Không tìm thấy sản phẩm", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<List<Sanpham>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error"+error.getMessage(),Toast.LENGTH_SHORT).show();
                 loadLapTop.setVisibility(View.INVISIBLE);
             }
         });
+
+//        ApiSp.apiDevice.getlistLapTop("media", "4452ff5b-1980-4626-b646-5fa4c03159d0").enqueue(new Callback<List<Sanpham>>() {
+//            @Override
+//            public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
+//                laptopArrayList= (ArrayList<Sanpham>) response.body();
+//                laptopAdapter=new SanphamAdapter(laptopArrayList,getApplicationContext());
+//                listViewLapTop.setAdapter(laptopAdapter);
+//                loadLapTop.setVisibility(View.INVISIBLE);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Sanpham>> call, Throwable t) {
+//                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+//                loadLapTop.setVisibility(View.INVISIBLE);
+//            }
+//        });
     }
 
     private void ActionBar() {

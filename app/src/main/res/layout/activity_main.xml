@@ -21,23 +21,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="210dp">
+                    android:layout_height="210dp"
+                    android:layout_marginTop="20dp">
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="10dp"
                         app:cardBackgroundColor="#00FFFFFF"
+                        app:cardCornerRadius="10dp"
                         app:cardElevation="0dp">
+
                         <ViewFlipper
                             android:id="@+id/viewflipper"
                             android:layout_width="match_parent"
-                            android:layout_height="180dp"/>
+                            android:layout_height="180dp" />
                     </androidx.cardview.widget.CardView>
                 </androidx.appcompat.widget.Toolbar>
+
                 <LinearLayout
                     android:background="@color/background"
                     android:orientation="vertical"

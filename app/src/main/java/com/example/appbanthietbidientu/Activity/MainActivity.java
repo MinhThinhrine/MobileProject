@@ -1,6 +1,8 @@
 package com.example.appbanthietbidientu.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,11 +36,18 @@ import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.model.GioHang;
 import com.example.appbanthietbidientu.model.Loaisp;
 import com.example.appbanthietbidientu.model.Sanpham;
+import com.example.appbanthietbidientu.model.Sanphammoi;
 import com.example.appbanthietbidientu.ultil.ApiSp;
 import com.example.appbanthietbidientu.ultil.CheckConnect;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +68,7 @@ public class MainActivity extends AppCompatActivity{
     TextView titleHome,logout,txtEmail;
     public static ArrayList<GioHang> gioHangArrayList;
 
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,29 +136,39 @@ public class MainActivity extends AppCompatActivity{
                         Intent thongtin=new Intent(MainActivity.this,ThongTinActivity.class);
                         startActivity(thongtin);
                         break;
+                    case 5:
+                        startActivity(new Intent(MainActivity.this, HomeAdmin.class));
+                        break;
                 }
             }
         });
     }
 
     private void GetDuLieusp() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference();
         loadMain.setVisibility(View.VISIBLE);
-        ApiSp.apiDevice.getListsp("media", "04505275-acd8-47cb-9bdb-5885d1fbaeff").enqueue(new Callback<List<Sanpham>>() {
+
+        databaseReference.child("sanphammoi").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
-                sanphamArrayList= (ArrayList<Sanpham>) response.body();
-                SanphammoiAdapter sanphamAdapter=new SanphammoiAdapter(sanphamArrayList, getApplicationContext());
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                sanphamArrayList.clear();
+                for(DataSnapshot nap : snapshot.getChildren()){
+                    Sanpham sanphammoi = nap.getValue(Sanpham.class);
+                    sanphamArrayList.add(sanphammoi);
+                }
+                SanphammoiAdapter sanphamAdapter = new SanphammoiAdapter(sanphamArrayList, getApplicationContext());
                 listSanPhamMoi.setAdapter(sanphamAdapter);
 
-                //Set sản phẩm mới
-                GridLayoutManager gridLayoutManager=new GridLayoutManager(getApplicationContext(),2);
+                listSanPhamMoi.setAdapter(sanphamAdapter);
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                 listSanPhamMoi.setLayoutManager(gridLayoutManager);
                 loadMain.setVisibility(View.INVISIBLE);
             }
 
             @Override
-            public void onFailure(Call<List<Sanpham>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error"+error.getMessage(),Toast.LENGTH_SHORT).show();
                 loadMain.setVisibility(View.INVISIBLE);
             }
         });
@@ -158,7 +178,7 @@ public class MainActivity extends AppCompatActivity{
     private void ActionViewFlip() {
         ArrayList<String> mangQuangCao=new ArrayList<>();
         mangQuangCao.add("https://image-us.24h.com.vn/upload/3-2020/images/2020-07-26/Top-dien-thoai-co-camera-sau-hinh-chu-L-chup-anh-sieu-dinh-1-1595762816-463-width660height440.jpg");
-        mangQuangCao.add("https://tapchicongthuong.vn/images/19/9/20/toc-tien-oppo.jpg");
+        mangQuangCao.add("https://genk.mediacdn.vn/2019/6/22/img20180727113150419-15611863490181429886619.jpg");
         mangQuangCao.add("https://cdn.sforum.vn/sforum/wp-content/uploads/2020/08/OPPO-F17-1.jpg");
         mangQuangCao.add("https://quanlykho.vn/wp-content/uploads/2022/08/img_63083bb914d24.png");
 
@@ -215,7 +235,11 @@ public class MainActivity extends AppCompatActivity{
         txtEmail = findViewById(R.id.txtEmail);
         sanphamArrayList = new ArrayList<>();
 
-        String email = getIntent().getStringExtra("email");
+
+        sharedPreferences = getSharedPreferences("dataLogin", Context.MODE_PRIVATE);
+        String role = sharedPreferences.getString("role","");
+        String email = sharedPreferences.getString("email","");
+        Toast.makeText(this, "Role:"+role, Toast.LENGTH_SHORT).show();
         txtEmail.setText(email);
 
         loaispArrayList=new ArrayList<>();
@@ -224,6 +248,9 @@ public class MainActivity extends AppCompatActivity{
         loaispArrayList.add(2,new Loaisp(0,"Laptop",R.drawable.ic_action_laptop));
         loaispArrayList.add(3,new Loaisp(0,"Liên Hệ",R.drawable.ic_action_contact));
         loaispArrayList.add(4,new Loaisp(0,"Thông Tin",R.drawable.ic_action_infor));
+        if(role.contains("admin")){
+            loaispArrayList.add(5,new Loaisp(0,"Admin",R.drawable.icon_user));
+        }
 
         LoaispAdapter loaispAdapter=new LoaispAdapter(loaispArrayList,MainActivity.this);
         listManHinhChinh.setAdapter(loaispAdapter);
