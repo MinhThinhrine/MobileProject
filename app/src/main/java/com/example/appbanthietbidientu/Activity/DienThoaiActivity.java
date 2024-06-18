@@ -24,6 +24,11 @@ import com.example.appbanthietbidientu.model.Sanpham;
 import com.example.appbanthietbidientu.ultil.ApiSp;
 import com.example.appbanthietbidientu.ultil.BaseFunctionActivity;
 import com.example.appbanthietbidientu.ultil.CheckConnect;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,21 +76,51 @@ public class DienThoaiActivity extends BaseFunctionActivity {
 
     private void getData() {
         loadDienThoai.setVisibility(View.VISIBLE);
-        ApiSp.apiDevice.getlistDienThoai("media", "d14eb726-c131-4860-a3e4-266d0aa206ed").enqueue(new Callback<List<Sanpham>>() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference();
+
+        databaseReference.child("dienthoai").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
-                dienThoaiArrayList= (ArrayList<Sanpham>) response.body();
-                dienThoaiAdapter=new SanphamAdapter(dienThoaiArrayList,getApplicationContext());
-                listViewDienThoai.setAdapter(dienThoaiAdapter);
-                loadDienThoai.setVisibility(View.INVISIBLE);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                dienThoaiArrayList.clear();
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Sanpham sanpham = dataSnapshot.getValue(Sanpham.class);
+                        dienThoaiArrayList.add(sanpham);
+                    }
+                    dienThoaiAdapter = new SanphamAdapter(dienThoaiArrayList, getApplicationContext());
+                    listViewDienThoai.setAdapter(dienThoaiAdapter);
+                    loadDienThoai.setVisibility(View.INVISIBLE);
+                } else {
+                    Toast.makeText(DienThoaiActivity.this, "Không tồn tại sản phẩm nào", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<List<Sanpham>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(),"Error: "+ error.getMessage(),Toast.LENGTH_SHORT).show();
                 loadDienThoai.setVisibility(View.INVISIBLE);
             }
         });
+
+
+
+
+//        ApiSp.apiDevice.getlistDienThoai("media", "d14eb726-c131-4860-a3e4-266d0aa206ed").enqueue(new Callback<List<Sanpham>>() {
+//            @Override
+//            public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
+//                dienThoaiArrayList= (ArrayList<Sanpham>) response.body();
+//                dienThoaiAdapter=new SanphamAdapter(dienThoaiArrayList,getApplicationContext());
+//                listViewDienThoai.setAdapter(dienThoaiAdapter);
+//                loadDienThoai.setVisibility(View.INVISIBLE);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Sanpham>> call, Throwable t) {
+//                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+//                loadDienThoai.setVisibility(View.INVISIBLE);
+//            }
+//        });
     }
 
 //    private void LoadmoreData() {
