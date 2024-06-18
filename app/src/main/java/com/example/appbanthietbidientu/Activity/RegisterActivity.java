@@ -91,9 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         });
                             } else {
                                 int newUserId = 1;
-
                                 User user = new User(strAccount, strPassword, newUserId,"user");
-
                                 ref.child(String.valueOf(newUserId)).setValue(user)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override

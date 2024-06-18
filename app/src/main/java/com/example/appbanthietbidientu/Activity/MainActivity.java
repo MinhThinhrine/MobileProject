@@ -1,6 +1,8 @@
 package com.example.appbanthietbidientu.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -45,6 +47,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity{
     TextView titleHome,logout,txtEmail;
     public static ArrayList<GioHang> gioHangArrayList;
 
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,6 +135,9 @@ public class MainActivity extends AppCompatActivity{
                     case 4:
                         Intent thongtin=new Intent(MainActivity.this,ThongTinActivity.class);
                         startActivity(thongtin);
+                        break;
+                    case 5:
+                        startActivity(new Intent(MainActivity.this, HomeAdmin.class));
                         break;
                 }
             }
@@ -228,7 +235,11 @@ public class MainActivity extends AppCompatActivity{
         txtEmail = findViewById(R.id.txtEmail);
         sanphamArrayList = new ArrayList<>();
 
-        String email = getIntent().getStringExtra("email");
+
+        sharedPreferences = getSharedPreferences("dataLogin", Context.MODE_PRIVATE);
+        String role = sharedPreferences.getString("role","");
+        String email = sharedPreferences.getString("email","");
+        Toast.makeText(this, "Role:"+role, Toast.LENGTH_SHORT).show();
         txtEmail.setText(email);
 
         loaispArrayList=new ArrayList<>();
@@ -237,6 +248,9 @@ public class MainActivity extends AppCompatActivity{
         loaispArrayList.add(2,new Loaisp(0,"Laptop",R.drawable.ic_action_laptop));
         loaispArrayList.add(3,new Loaisp(0,"Liên Hệ",R.drawable.ic_action_contact));
         loaispArrayList.add(4,new Loaisp(0,"Thông Tin",R.drawable.ic_action_infor));
+        if(role.contains("admin")){
+            loaispArrayList.add(5,new Loaisp(0,"Admin",R.drawable.icon_user));
+        }
 
         LoaispAdapter loaispAdapter=new LoaispAdapter(loaispArrayList,MainActivity.this);
         listManHinhChinh.setAdapter(loaispAdapter);

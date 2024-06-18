@@ -2,6 +2,7 @@ package com.example.appbanthietbidientu.Activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView titleLogin, registerAccount;
     EditText edtAccount, edtPassword;
     TextView login;
+    SharedPreferences sharedPreferences;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -70,12 +72,17 @@ public class LoginActivity extends AppCompatActivity {
                                 DataSnapshot userSnapshot = snapshot.getChildren().iterator().next();
                                 String userId = userSnapshot.getKey();
                                 String storedPassword = userSnapshot.child("pass").getValue(String.class);
+                                sharedPreferences = getSharedPreferences("dataLogin",MODE_PRIVATE);
 
                                 if(storedPassword!=null && storedPassword.equals(strPassword)){
+                                    String role = userSnapshot.child("role").getValue(String.class);
                                     Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    intent.putExtra("user_id", userId);
-                                    intent.putExtra("email", strEmail);
+                                    intent.putExtra("role", role);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("role",role);
+                                    editor.putString("email", strEmail);
+                                    editor.apply();
                                     startActivity(intent);
                                     finish();
                                 }else{
