@@ -11,10 +11,10 @@
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="102dp">
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -22,10 +22,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Thêm người dùng"
-            app:layout_constraintHorizontal_bias="0.495"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="135dp"
+            tools:layout_editor_absoluteY="9dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -100,14 +101,14 @@
 
         <RadioButton
             android:id="@+id/checkRole1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="user" />
+            android:layout_width="75dp"
+            android:layout_height="66dp"
+            android:text="User" />
 
         <RadioButton
             android:id="@+id/checkRole2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="66dp"
             android:layout_marginStart="16dp"
             android:text="Admin" />
     </RadioGroup>
