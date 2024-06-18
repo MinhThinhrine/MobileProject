@@ -177,10 +177,10 @@ public class MainActivity extends AppCompatActivity{
     @RequiresApi(api = Build.VERSION_CODES.ECLAIR_MR1)
     private void ActionViewFlip() {
         ArrayList<String> mangQuangCao=new ArrayList<>();
-        mangQuangCao.add("https://image-us.24h.com.vn/upload/3-2020/images/2020-07-26/Top-dien-thoai-co-camera-sau-hinh-chu-L-chup-anh-sieu-dinh-1-1595762816-463-width660height440.jpg");
-        mangQuangCao.add("https://genk.mediacdn.vn/2019/6/22/img20180727113150419-15611863490181429886619.jpg");
-        mangQuangCao.add("https://cdn.sforum.vn/sforum/wp-content/uploads/2020/08/OPPO-F17-1.jpg");
-        mangQuangCao.add("https://quanlykho.vn/wp-content/uploads/2022/08/img_63083bb914d24.png");
+        mangQuangCao.add("https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2024/06/banner/1920x450--1--1920x450.jpg");
+        mangQuangCao.add("https://anphat.com.vn/media/lib/19-05-2021/esamz7rxyaaxax5.jpg");
+        mangQuangCao.add("https://r1.community.samsung.com/t5/image/serverpage/image-id/7729916iCF466CB66DC564B1/image-size/large?v=v2&px=999");
+        mangQuangCao.add("https://pbs.twimg.com/media/Eg7iPyrUYAAhi4c?format=jpg&name=900x900");
 
         for(int i=0;i<mangQuangCao.size();i++){
             ImageView imageView=new ImageView(getApplicationContext());

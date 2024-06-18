@@ -83,11 +83,12 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/button_admin"
             android:fontFamily="sans-serif"
+            android:gravity="center"
             android:paddingTop="10px"
             android:text="Đăng kí"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:textSize="14sp"
             android:textStyle="bold" />
     </LinearLayout>
 </RelativeLayout>

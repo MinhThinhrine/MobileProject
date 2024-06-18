@@ -103,67 +103,8 @@ public class DienThoaiActivity extends BaseFunctionActivity {
             }
         });
 
-
-
-
-//        ApiSp.apiDevice.getlistDienThoai("media", "d14eb726-c131-4860-a3e4-266d0aa206ed").enqueue(new Callback<List<Sanpham>>() {
-//            @Override
-//            public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
-//                dienThoaiArrayList= (ArrayList<Sanpham>) response.body();
-//                dienThoaiAdapter=new SanphamAdapter(dienThoaiArrayList,getApplicationContext());
-//                listViewDienThoai.setAdapter(dienThoaiAdapter);
-//                loadDienThoai.setVisibility(View.INVISIBLE);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Sanpham>> call, Throwable t) {
-//                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
-//                loadDienThoai.setVisibility(View.INVISIBLE);
-//            }
-//        });
     }
 
-//    private void LoadmoreData() {
-//        listViewDienThoai.setOnScrollListener(new AbsListView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(AbsListView absListView, int i) {
-//
-//            }
-//
-//            @Override
-//            public void onScroll(AbsListView absListView, int FirstItem, int VisibleItem, int TotalItem) {
-//                if(FirstItem + VisibleItem == TotalItem && TotalItem != 0 && isLoading == false && limitData == false){
-//                    isLoading =true;
-//                    ThreadData threadData=new ThreadData();
-//                    threadData.start();
-//                }
-//            }
-//        });
-//    }
-
-//    private void getData(int page) {
-//        ApiSp.apiSp.getlistDienThoai(page).enqueue(new Callback<List<Sanpham>>() {
-//            @Override
-//            public void onResponse(Call<List<Sanpham>> call, Response<List<Sanpham>> response) {
-//                if(response.body() != null && response.body().size() > 2){
-//                    listViewDienThoai.removeFooterView(footerView);
-//                    dienThoaiArrayList.addAll(response.body());
-//                    dienThoaiAdapter = new SanphamAdapter(dienThoaiArrayList, getApplicationContext());
-//                    listViewDienThoai.setAdapter(dienThoaiAdapter);
-//                    dienThoaiAdapter.notifyDataSetChanged();
-//                }else {
-//                    limitData = true;
-//                    listViewDienThoai.removeFooterView(footerView);
-//                    CheckConnect.ShowToast_Short(getApplicationContext(),"Đã hết dữ liệu");
-//                }
-//            }
-
-//            @Override
-//            public void onFailure(Call<List<Sanpham>> call, Throwable t) {
-//                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 
     private void ActionBar() {
         setSupportActionBar(toolbarDienThoai);
@@ -246,36 +187,4 @@ public class DienThoaiActivity extends BaseFunctionActivity {
         footerView = inflater.inflate(R.layout.loading_layout,null);
 //        mHander=new mHander();
     }
-
-//    public class mHander extends Handler{
-//        @Override
-//        public void handleMessage(@NonNull Message msg) {
-//            switch (msg.what){
-//                case 0:
-//                    listViewDienThoai.addFooterView(footerView);
-//                    break;
-//                case 1:
-//                    getData(++page);
-//                    isLoading = false;
-//                    break;
-//            }
-//            super.handleMessage(msg);
-//        }
-//    }
-
-//    public class ThreadData extends Thread{
-//        @Override
-//        public void run() {
-//            mHander.sendEmptyMessage(0);
-//            try {
-//                Thread.sleep(3000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//
-//            Message message =mHander.obtainMessage(1);
-//            mHander.sendMessage(message);
-//            super.run();
-//        }
-//    }
 }
