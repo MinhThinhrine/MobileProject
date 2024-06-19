@@ -107,9 +107,9 @@ public class manageUser extends AppCompatActivity {
 
     private void anhxa() {
         txview = findViewById(R.id.numuser);
+        toolbar = findViewById(R.id.toolbar);
         buttonadd = findViewById(R.id.them);
         recyclerView = findViewById(R.id.listUser);
-        toolbar = findViewById(R.id.toolbar);
         userAdapter = new userAdapter(userList);
     }
 }
