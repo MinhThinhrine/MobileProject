@@ -74,9 +74,9 @@ public class HomeAdmin extends AppCompatActivity {
         itemAdmins = new ArrayList<>();
 
         // Thêm dữ liệu vào danh sách itemAdmins
-        itemAdmins.add(new Item_admin(R.drawable.icon_email, "Quản lý người dùng"));
-        itemAdmins.add(new Item_admin(R.drawable.ic_action_phone, " Sản phẩm điện thoại"));
-        itemAdmins.add(new Item_admin(R.drawable.ic_action_laptop, " sản phẩm Laptop"));
+        itemAdmins.add(new Item_admin(R.drawable.icon_user, "Quản lý người dùng"));
+        itemAdmins.add(new Item_admin(R.drawable.ic_action_phone, "Sản phẩm Điện thoại"));
+        itemAdmins.add(new Item_admin(R.drawable.ic_action_laptop, "Sản phẩm Laptop"));
         itemAdmins.add(new Item_admin(R.drawable.ic_action_giohang, "Sản phẩm mới"));
         itemAdmins.add(new Item_admin(R.drawable.ic_action_giohang, "Sản phẩm mới"));
         itemAdmins.add(new Item_admin(R.drawable.ic_action_giohang, "Sản phẩm mới"));

@@ -12,11 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="8dp">
+
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="top|right"
-            android:src="@drawable/newsp" />
+            android:src="@drawable/sign" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,10 +27,10 @@
 
             <ImageView
                 android:id="@+id/img_sp"
-                android:layout_width="110dp"
+                android:layout_width="268dp"
                 android:layout_height="110dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:src="@mipmap/ic_launcher" />
 
@@ -42,22 +43,23 @@
                 android:gravity="center"
                 android:text="android"
                 android:textColor="#111"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtGiasp"
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:text="17.000đ"
-                android:textColor="#ED125D"
+                android:textColor="@color/black"
                 android:textSize="16dp"
-                />
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

@@ -10,12 +10,11 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/ToolbarDienThoai"
-        android:background="#2196F3"
-        app:title="Điện Thoại"
-        app:titleTextColor="#FFFFFF"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        />
+        android:background="@color/white"
+        app:title="Điện Thoại"
+        app:titleTextColor="@color/black" />
     <ListView
         android:id="@+id/listviewDienThoai"
         android:layout_below="@+id/ToolbarDienThoai"

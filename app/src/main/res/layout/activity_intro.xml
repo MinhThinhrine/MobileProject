@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.IntroActivity"
-    android:background="@color/white"
-    android:gravity="center">
+    android:background="#2DB2A9"
+    android:gravity="center"
+    tools:context=".Activity.IntroActivity">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="match_parent"
         app:srcCompat="@drawable/picture_intro" />
 </LinearLayout>

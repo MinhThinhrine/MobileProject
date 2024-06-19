@@ -5,17 +5,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFFFFF"
     android:weightSum="10">
+
     <LinearLayout
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:layout_weight="3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content">
+        android:layout_weight="3">
+
         <ImageView
             android:id="@+id/imageviewGioHang"
-            android:adjustViewBounds="true"
-            android:layout_margin="5dp"
             android:layout_width="match_parent"
-            android:layout_height="100dp"/>
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:adjustViewBounds="true" />
     </LinearLayout>
     <LinearLayout
         android:gravity="center"
@@ -29,18 +31,21 @@
             android:id="@+id/textviewTenGioHang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
             android:text="Tên sản phẩm"
-            android:textColor="#111"
-            android:textSize="23dp" />
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textviewGiaMonHang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
+            android:layout_marginRight="90dp"
             android:text="Giá"
-            android:textColor="#E91E63"
-            android:textSize="17dp" />
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:gravity="center"

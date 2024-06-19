@@ -10,13 +10,16 @@
 
     <RelativeLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
         android:layout_weight="1">
 
         <ImageView
             android:id="@+id/imagUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/icon_user" />
 
         <TextView
@@ -24,10 +27,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="90dp"
             android:layout_toRightOf="@id/imagUser"
-            android:text="id:"
-            android:textSize="15dp" />
+            android:text="ID:"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/emaiuser"
@@ -38,7 +43,8 @@
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/imagUser"
             android:text="Email:"
-            android:textSize="15dp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <LinearLayout
@@ -48,19 +54,20 @@
         android:gravity="center_vertical">
 
         <Button
-            android:background="@drawable/button_admin"
-            android:textSize="10dp"
             android:layout_width="112dp"
-            android:layout_height="25dp"
-            android:text="chỉnh sửa" />
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_admin"
+            android:text="chỉnh sửa"
+            android:textSize="10dp" />
 
         <Button
-            android:background="@drawable/button_admin"
-            android:textSize="10dp"
-            android:layout_marginTop="10dp"
             android:layout_width="112dp"
-            android:layout_height="25dp"
-            android:text="xóa" />
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_admin"
+            android:text="xóa"
+            android:textSize="10dp" />
     </LinearLayout>
 
 </LinearLayout>

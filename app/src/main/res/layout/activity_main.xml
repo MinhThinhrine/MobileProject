@@ -16,7 +16,8 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="250dp" />
+                android:layout_height="150dp"
+                android:background="#B3B3B3" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -25,8 +26,8 @@
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="210dp"
-                    android:layout_marginTop="20dp">
+                    android:layout_height="140dp"
+                    android:layout_marginTop="10dp">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
@@ -38,44 +39,49 @@
                         <ViewFlipper
                             android:id="@+id/viewflipper"
                             android:layout_width="match_parent"
-                            android:layout_height="180dp" />
+                            android:layout_height="140dp" />
                     </androidx.cardview.widget.CardView>
                 </androidx.appcompat.widget.Toolbar>
 
                 <LinearLayout
-                    android:background="@color/background"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="#B3B3B3"
+                    android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp">
+
                         <TextView
                             android:id="@+id/titleHome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:padding="5dp"
-                            android:text="Sản phẩm mới nhất"
-                            android:textColor="#FFEB3B"
-                            android:textStyle="bold|italic"
+                            android:text="Sản phẩm mới"
+                            android:textColor="@color/black"
                             android:textSize="28sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textStyle="bold|italic" />
                     </LinearLayout>
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/listSanphammoi"
-                            android:layout_marginStart="15dp"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="15dp" />
+
                         <ProgressBar
                             android:id="@+id/loadMain"
-                            android:layout_centerInParent="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:visibility="invisible"/>
+                            android:layout_centerInParent="true"
+                            android:visibility="invisible" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -138,17 +144,18 @@
                     android:id="@+id/listManhinhchinh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+
                 <TextView
                     android:id="@+id/logout"
-                    android:text="Đăng Xuất"
-                    android:textSize="18sp"
-                    android:textColor="#F44336"
-                    android:gravity="center"
-                    android:padding="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/boder_logout"
                     android:elevation="2dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Đăng Xuất"
+                    android:textColor="#00BCD4"
+                    android:textSize="18sp" />
             </LinearLayout>
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
