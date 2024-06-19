@@ -1,11 +1,17 @@
 package com.example.appbanthietbidientu.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.appbanthietbidientu.Activity.updateProduct;
 import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.model.Sanpham;
 import com.squareup.picasso.Picasso;
@@ -30,6 +36,7 @@ public class prdAdminAdapter extends RecyclerView.Adapter<prdAdminAdapter.produc
     public productHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_product,parent,false);
         return new productHolder(view);
+
     }
 
     @Override
@@ -45,9 +52,25 @@ public class prdAdminAdapter extends RecyclerView.Adapter<prdAdminAdapter.produc
                 .into(holder.anhsp);
         holder.txtTen.setText(sanpham.getTensanpham());
         holder.txtGia.setText("Giá: " + decimalFormat.format(Integer.parseInt(sanpham.getGiasanpham())) + "₫");
-
+        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OnclickGotoUpdateProduct(sanpham);
+            }
+        });
     }
 
+    public void OnclickGotoUpdateProduct(Sanpham sanpham){
+        Intent intent = new Intent(context, updateProduct.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("object_sp",sanpham);
+        intent.putExtras(bundle);
+        // Kiểm tra nếu context là một Activity
+        if (!(context instanceof Activity)) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+        context.startActivity(intent);
+    }
     @Override
     public int getItemCount() {
         if(sanphamList != null){
@@ -56,12 +79,18 @@ public class prdAdminAdapter extends RecyclerView.Adapter<prdAdminAdapter.produc
         return 0;
     }
 
+    public void cleanContext(){
+        context = null;
+    }
+
     class productHolder extends RecyclerView.ViewHolder{
+        LinearLayout linearLayout;
         private TextView txtGia;
         private TextView txtTen;
         private ImageView anhsp;
         public productHolder(@NonNull View itemView) {
             super(itemView);
+            linearLayout = itemView.findViewById(R.id.layoutprdadm);
             txtTen = itemView.findViewById(R.id.Ten_pd);
             txtGia = itemView.findViewById(R.id.giapd);
             anhsp = itemView.findViewById(R.id.anhsp);

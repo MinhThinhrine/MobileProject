@@ -69,4 +69,16 @@ public class Sanpham implements Serializable {
     public void setIdsanpham(String idsanpham) {
         this.idsanpham = idsanpham;
     }
+
+    @Override
+    public String toString() {
+        return "Sanpham{" +
+                "id='" + id + '\'' +
+                ", tensanpham='" + tensanpham + '\'' +
+                ", giasanpham='" + giasanpham + '\'' +
+                ", hinhanhsanpham='" + hinhanhsanpham + '\'' +
+                ", motasanpham='" + motasanpham + '\'' +
+                ", idsanpham='" + idsanpham + '\'' +
+                '}';
+    }
 }

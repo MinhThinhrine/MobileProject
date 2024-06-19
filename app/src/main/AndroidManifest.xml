@@ -24,6 +24,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.updateProduct"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.addProduct"
+            android:exported="false" />
+        <activity
             android:name=".Activity.manageProduct"
             android:exported="true" />
         <activity
