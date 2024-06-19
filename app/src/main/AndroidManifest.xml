@@ -24,6 +24,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.manageProduct"
+            android:exported="true" />
+        <activity
             android:name=".Activity.addUser"
             android:exported="false" />
         <activity

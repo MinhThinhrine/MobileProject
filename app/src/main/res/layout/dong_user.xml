@@ -5,6 +5,7 @@
     android:background="@drawable/bgr_item_adm"
     android:layout_margin="5dp"
     android:padding="5dp"
+    android:id="@+id/layout_user"
     android:orientation="horizontal">
 
     <RelativeLayout
