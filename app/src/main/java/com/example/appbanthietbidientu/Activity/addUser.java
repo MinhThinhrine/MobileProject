@@ -73,7 +73,7 @@ public class addUser extends AppCompatActivity {
                                 int newUserId = Integer.parseInt(latestUserId) + 1;
 
                                 // Tạo đối tượng User
-                                User user = new User(email, pass1, newUserId,"user");
+                                User user = new User(email, pass1, newUserId,checked);
 
                                 ref.child(String.valueOf(newUserId)).setValue(user)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -91,7 +91,7 @@ public class addUser extends AppCompatActivity {
                                         });
                             } else {
                                 int newUserId = 1;
-                                User user = new User(email, pass1, newUserId,"user");
+                                User user = new User(email, pass1, newUserId,checked);
                                 ref.child(String.valueOf(newUserId)).setValue(user)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override

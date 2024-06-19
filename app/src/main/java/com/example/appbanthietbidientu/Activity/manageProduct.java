@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class manageProduct extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
     Toolbar toolbar;
     SharedPreferences sharedPreferences;
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +47,19 @@ public class manageProduct extends AppCompatActivity {
             getData();
             anhxa();
             back();
-//            add();
+            add();
         } else {
             CheckConnect.ShowToast_Short(getApplicationContext(),"Error Connect Internet");
         }
+    }
+
+    private void add() {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(manageProduct.this,addProduct.class));
+            }
+        });
     }
 
     private void back() {
@@ -77,7 +88,7 @@ public class manageProduct extends AppCompatActivity {
                     }
                     // Sau khi cập nhật dữ liệu, cần thông báo cho Adapter biết là dữ liệu đã thay đổi
                     prdAdminAdapter.notifyDataSetChanged();
-                    Log.d("ERRRRRRRRRRRRRRR","List "+sanphamList.size());
+//                    Log.d("ERRRRRRRRRRRRRRR","List "+sanphamList.size());
                     // Cập nhật số lượng sản phẩm lên TextView
                     textView.setText("  Số sản phẩm: "+sanphamList.size());
                 } else {
@@ -103,5 +114,14 @@ public class manageProduct extends AppCompatActivity {
 
         String title = sharedPreferences.getString("title","");
         toolbar.setTitle(title);
+        button = findViewById(R.id.addProduct);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (prdAdminAdapter != null) {
+            prdAdminAdapter.cleanContext();
+        }
     }
 }

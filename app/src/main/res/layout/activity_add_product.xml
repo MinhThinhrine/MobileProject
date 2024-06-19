@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/boder"
+    tools:context=".Activity.addUser">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/addtoolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="102dp">
+
+        <TextView
+            android:id="@+id/add_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Thêm sản phẩm"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="135dp"
+            tools:layout_editor_absoluteY="9dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/newimgBack"
+        android:layout_width="61dp"
+        android:layout_height="42dp"
+        app:layout_constraintEnd_toStartOf="@+id/addtoolbar2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_action_back_black"
+        tools:ignore="MissingConstraints"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <EditText
+        android:background="@drawable/boder_edit_text"
+        android:id="@+id/namePro"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
+        android:textSize="18sp"
+        android:ems="10"
+        android:hint="Tên sản phẩm"
+        android:inputType="text"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addtoolbar2" />
+
+    <EditText
+        android:background="@drawable/boder_edit_text"
+        android:id="@+id/pricePro"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Giá sản phẩm"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/namePro" />
+
+
+    <EditText
+        android:id="@+id/linkanh"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/boder_edit_text"
+        android:ems="10"
+        android:hint="Link ảnh sản phẩm"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pricePro" />
+
+    <EditText
+        android:id="@+id/motaPro"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/boder_edit_text"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Mô tả sản phẩm"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pricePro" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupPro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.736">
+
+        <RadioButton
+            android:id="@+id/checkpro1"
+            android:layout_width="95dp"
+            android:layout_height="66dp"
+            android:text="Điện thoại" />
+
+        <RadioButton
+            android:id="@+id/checkpro2"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_marginStart="16dp"
+            android:text="Laptop" />
+
+        <RadioButton
+            android:id="@+id/checkpro3"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_marginStart="16dp"
+            android:text="Sản phẩm mới" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
+        android:background="@drawable/button_admin"
+        android:text="Thêm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupPro"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.appbanthietbidientu.Adapter.itemAdminAdapter;
@@ -21,6 +22,7 @@ public class HomeAdmin extends AppCompatActivity {
     ArrayList<Item_admin> itemAdmins;
     itemAdminAdapter adminAdapter;
     SharedPreferences sharedPreferences;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +30,21 @@ public class HomeAdmin extends AppCompatActivity {
         setContentView(R.layout.activity_home_admin);
 
         Anhxa();
+        back();
 
         adminAdapter = new itemAdminAdapter(this, R.layout.dong_item_admin, itemAdmins);
 
         item.setAdapter(adminAdapter);
         clickItemadmin();
+    }
+
+    private void back() {
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeAdmin.this,MainActivity.class));
+            }
+        });
     }
 
     private void clickItemadmin() {
@@ -70,6 +82,7 @@ public class HomeAdmin extends AppCompatActivity {
     }
 
     private void Anhxa() {
+        imageView = findViewById(R.id.backhomeAdm);
         item = findViewById(R.id.gridviewitem);
         itemAdmins = new ArrayList<>();
 
