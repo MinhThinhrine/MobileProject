@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:background="#FFFFFF"
     android:id="@+id/layoutprdadm"
+    android:elevation="8dp"
+    android:layout_marginBottom="4dp"
     android:padding="8dp">
 
     <ImageView
