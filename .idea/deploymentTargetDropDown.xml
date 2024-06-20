@@ -30,6 +30,9 @@
       <entry key="test">
         <State />
       </entry>
+      <entry key="updateProduct">
+        <State />
+      </entry>
     </value>
   </component>
 </project>

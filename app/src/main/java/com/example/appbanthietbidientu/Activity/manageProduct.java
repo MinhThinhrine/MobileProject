@@ -18,8 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appbanthietbidientu.R;
+import com.example.appbanthietbidientu.itemInterface.IDelete;
 import com.example.appbanthietbidientu.model.Sanpham;
 import com.example.appbanthietbidientu.ultil.CheckConnect;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -107,7 +110,24 @@ public class manageProduct extends AppCompatActivity {
     private void anhxa() {
         recyclerView = findViewById(R.id.cyclistadm);
         toolbar = findViewById(R.id.titleProduct);
-        prdAdminAdapter = new prdAdminAdapter(sanphamList, getApplicationContext());
+        prdAdminAdapter = new prdAdminAdapter(sanphamList, getApplicationContext(), new IDelete() {
+            @Override
+            public void deleteProduct(Sanpham sanpham) {
+                SharedPreferences sharedPreferences = getSharedPreferences("dataProduct", Context.MODE_PRIVATE);
+                String data = sharedPreferences.getString("sanpham", "");
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference(data);
+                reference.child(sanpham.getId()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(manageProduct.this, "Xóa sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(manageProduct.this, "Xóa sản phẩm thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
         linearLayoutManager = new LinearLayoutManager(manageProduct.this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(prdAdminAdapter);
@@ -124,4 +144,6 @@ public class manageProduct extends AppCompatActivity {
             prdAdminAdapter.cleanContext();
         }
     }
+
+
 }

@@ -18,8 +18,11 @@ import android.widget.Toast;
 
 import com.example.appbanthietbidientu.Adapter.userAdapter;
 import com.example.appbanthietbidientu.R;
+import com.example.appbanthietbidientu.itemInterface.Adelete;
 import com.example.appbanthietbidientu.model.User;
 import com.example.appbanthietbidientu.ultil.CheckConnect;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -110,6 +113,22 @@ public class manageUser extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         buttonadd = findViewById(R.id.them);
         recyclerView = findViewById(R.id.listUser);
-        userAdapter = new userAdapter(userList);
+        userAdapter = new userAdapter(userList, new Adelete() {
+            @Override
+            public void deleteUser(User user) {
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
+
+                reference.child(String.valueOf(user.getId())).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(manageUser.this, "Đã xóa user thành công", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(manageUser.this, "Xóa user thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                    }
+                });
+            }
+        });
     }
 }

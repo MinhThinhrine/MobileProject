@@ -7,12 +7,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appbanthietbidientu.Activity.updateProduct;
 import com.example.appbanthietbidientu.R;
+import com.example.appbanthietbidientu.itemInterface.IDelete;
 import com.example.appbanthietbidientu.model.Sanpham;
 import com.squareup.picasso.Picasso;
 
@@ -25,10 +28,11 @@ import java.util.List;
 public class prdAdminAdapter extends RecyclerView.Adapter<prdAdminAdapter.productHolder>{
     private List<Sanpham> sanphamList;
     Context context;
-
-    public prdAdminAdapter(List<Sanpham> sanphamList, Context context) {
+    private IDelete iDelete;
+    public prdAdminAdapter(List<Sanpham> sanphamList, Context context,IDelete iDelete) {
         this.sanphamList = sanphamList;
         this.context = context;
+        this.iDelete = iDelete;
     }
 
     @NonNull
@@ -36,7 +40,6 @@ public class prdAdminAdapter extends RecyclerView.Adapter<prdAdminAdapter.produc
     public productHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_product,parent,false);
         return new productHolder(view);
-
     }
 
     @Override
@@ -52,10 +55,18 @@ public class prdAdminAdapter extends RecyclerView.Adapter<prdAdminAdapter.produc
                 .into(holder.anhsp);
         holder.txtTen.setText(sanpham.getTensanpham());
         holder.txtGia.setText("Giá: " + decimalFormat.format(Integer.parseInt(sanpham.getGiasanpham())) + "₫");
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+        holder.bntSuasp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 OnclickGotoUpdateProduct(sanpham);
+            }
+        });
+
+        holder.btnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iDelete.deleteProduct(sanpham);
+                Toast.makeText(context, "Xóa sản phẩm: "+sanpham.getId(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -86,15 +97,19 @@ public class prdAdminAdapter extends RecyclerView.Adapter<prdAdminAdapter.produc
     class productHolder extends RecyclerView.ViewHolder{
         LinearLayout linearLayout;
         private TextView txtGia;
+        private Button bntSuasp,btnXoa;
         private TextView txtTen;
         private ImageView anhsp;
+
         public productHolder(@NonNull View itemView) {
             super(itemView);
             linearLayout = itemView.findViewById(R.id.layoutprdadm);
             txtTen = itemView.findViewById(R.id.Ten_pd);
             txtGia = itemView.findViewById(R.id.giapd);
             anhsp = itemView.findViewById(R.id.anhsp);
+            bntSuasp = itemView.findViewById(R.id.bntSuasp);
 
+            btnXoa = itemView.findViewById(R.id.btnXoaPd);
         }
     }
 }

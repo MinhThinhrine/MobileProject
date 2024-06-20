@@ -31,19 +31,19 @@
             android:exported="false" />
         <activity
             android:name=".Activity.manageProduct"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activity.addUser"
             android:exported="false" />
         <activity
             android:name=".Activity.manageUser"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activity.HomeAdmin"
             android:exported="true" />
         <activity
             android:name=".Activity.test"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Activity.RegisterActivity"
             android:exported="false">

@@ -3,21 +3,25 @@ package com.example.appbanthietbidientu.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbanthietbidientu.R;
+import com.example.appbanthietbidientu.itemInterface.Adelete;
 import com.example.appbanthietbidientu.model.User;
 
 import java.util.List;
 
 public class userAdapter extends RecyclerView.Adapter<userAdapter.userHolder>{
     private List<User> userList;
+    private Adelete adelete;
 
-    public userAdapter(List<User> userList) {
+    public userAdapter(List<User> userList, Adelete adelete) {
         this.userList = userList;
+        this.adelete = adelete;
     }
 
     @NonNull
@@ -32,12 +36,12 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.userHolder>{
         final User user = userList.get(position);
         holder.id.setText("Id: "+user.getId());
         holder.email.setText(user.getEmail());
-//        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                OnclickgotoUpdateUser(user);
-//            }
-//        });
+        holder.bntxoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adelete.deleteUser(user);
+            }
+        });
     }
 //    private void OnclickgotoUpdateUser(User user){
 //
@@ -51,9 +55,11 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.userHolder>{
     public class userHolder extends RecyclerView.ViewHolder{
 //        LinearLayout linearLayout;
         private TextView id,email;
+        private Button bntxoa;
         public userHolder(@NonNull View itemView) {
             super(itemView);
 //            linearLayout = itemView.findViewById(R.id.layout_user);
+            bntxoa = itemView.findViewById(R.id.xoaUser);
             id = itemView.findViewById(R.id.iduser);
             email = itemView.findViewById(R.id.emaiuser);
         }
