@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/boder"
+    android:background="#CCD8E1"
     tools:context=".Activity.addUser">
 
     <androidx.appcompat.widget.Toolbar
@@ -43,7 +43,10 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <EditText
-        android:background="@drawable/boder_edit_text"
+        android:padding="10dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@drawable/baseline_email_24"
+        android:background="@drawable/custom_input"
         android:id="@+id/newE"
         android:layout_width="350dp"
         android:layout_height="50dp"
@@ -58,7 +61,10 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <EditText
-        android:background="@drawable/boder_edit_text"
+        android:padding="10dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@drawable/baseline_lock_24"
+        android:background="@drawable/custom_input"
         android:id="@+id/newP1"
         android:layout_width="350dp"
         android:layout_height="50dp"
@@ -73,11 +79,14 @@
 
 
     <EditText
+        android:padding="10dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@drawable/baseline_lock_24"
         android:id="@+id/newP2"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/boder_edit_text"
+        android:background="@drawable/custom_input"
         android:ems="10"
         android:hint="Nhập lại mật khẩu"
         android:inputType="textPassword"
