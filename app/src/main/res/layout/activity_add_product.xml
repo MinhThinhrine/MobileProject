@@ -43,11 +43,12 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <EditText
-        android:background="@drawable/boder_edit_text"
+        android:padding="5dp"
+        android:background="@drawable/border_edt"
         android:id="@+id/namePro"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:textSize="18sp"
         android:ems="10"
         android:hint="Tên sản phẩm"
@@ -58,7 +59,8 @@
         app:layout_constraintTop_toBottomOf="@+id/addtoolbar2" />
 
     <EditText
-        android:background="@drawable/boder_edit_text"
+        android:padding="5dp"
+        android:background="@drawable/border_edt"
         android:id="@+id/pricePro"
         android:layout_width="350dp"
         android:layout_height="50dp"
@@ -73,11 +75,12 @@
 
 
     <EditText
+        android:padding="5dp"
         android:id="@+id/linkanh"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/boder_edit_text"
+        android:background="@drawable/border_edt"
         android:ems="10"
         android:hint="Link ảnh sản phẩm"
         android:inputType="text"
@@ -87,13 +90,16 @@
         app:layout_constraintTop_toBottomOf="@+id/pricePro" />
 
     <EditText
+        android:padding="5dp"
         android:id="@+id/motaPro"
         android:layout_width="350dp"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:layout_marginTop="104dp"
-        android:background="@drawable/boder_edit_text"
+        android:background="@drawable/border_edt"
         android:ems="10"
-        android:gravity="center"
+        android:layout_marginBottom="5dp"
+        android:gravity="top"
+        android:lines="6"
         android:hint="Mô tả sản phẩm"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,17 +108,20 @@
         app:layout_constraintTop_toBottomOf="@+id/pricePro" />
 
     <RadioGroup
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
         android:id="@+id/radioGroupPro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/border_edt"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.736">
+        app:layout_constraintTop_toBottomOf="@+id/motaPro"
+        app:layout_constraintVertical_bias="0.172">
 
         <RadioButton
             android:id="@+id/checkpro1"
@@ -139,7 +148,7 @@
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/button_admin"
         android:text="Thêm"
         app:layout_constraintBottom_toBottomOf="parent"

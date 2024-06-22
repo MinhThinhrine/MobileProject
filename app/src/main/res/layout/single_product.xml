@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:background="#FFFFFF"
     android:id="@+id/layoutprdadm"
+    android:elevation="8dp"
+    android:layout_marginBottom="4dp"
     android:padding="8dp">
 
     <ImageView
@@ -13,7 +16,7 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/background_login" />
+        android:background="@android:color/white" />
 
     <LinearLayout
         android:layout_width="0dp"
