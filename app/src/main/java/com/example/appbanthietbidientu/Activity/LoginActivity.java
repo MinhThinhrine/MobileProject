@@ -31,7 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView titleLogin, registerAccount;
+    TextView titleLogin, registerAccount, forgotPassword;
     EditText edtAccount, edtPassword;
     TextView login;
     SharedPreferences sharedPreferences;
@@ -44,11 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        titleLogin = findViewById(R.id.titleLogin);
-        edtAccount = findViewById(R.id.edtAccount);
-        edtPassword = findViewById(R.id.edtPassword);
-        login = findViewById(R.id.login);
-        registerAccount = findViewById(R.id.register_account);
+        khaibao();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("User");
         login.setOnClickListener(new View.OnClickListener() {
@@ -110,5 +106,19 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, forgot.class);
+                startActivity(intent);
+            }
+        });
+    }
+    public void khaibao(){
+        edtAccount = findViewById(R.id.edtAccount);
+        edtPassword = findViewById(R.id.edtPassword);
+        login = findViewById(R.id.login);
+        registerAccount = findViewById(R.id.register_account);
+        forgotPassword = findViewById(R.id.forgot_password);
     }
 }
