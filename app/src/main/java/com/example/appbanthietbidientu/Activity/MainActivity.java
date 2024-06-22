@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity{
         loaispArrayList.add(3,new Loaisp(0,"Liên Hệ",R.drawable.ic_action_contact));
         loaispArrayList.add(4,new Loaisp(0,"Thông Tin",R.drawable.ic_action_infor));
         if(role.contains("admin")){
-            loaispArrayList.add(5,new Loaisp(0,"Admin",R.drawable.icon_user));
+            loaispArrayList.add(5,new Loaisp(0,"Admin",R.drawable.icon_user_40));
         }
 
         LoaispAdapter loaispAdapter=new LoaispAdapter(loaispArrayList,MainActivity.this);

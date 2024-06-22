@@ -7,7 +7,7 @@
     android:weightSum="10">
 
     <LinearLayout
-        android:layout_width="70dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_weight="3">
@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/imageviewGioHang"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="90dp"
             android:layout_margin="5dp"
             android:adjustViewBounds="true" />
     </LinearLayout>
@@ -29,23 +29,23 @@
 
         <TextView
             android:id="@+id/textviewTenGioHang"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
+            android:paddingLeft="10dp"
             android:text="Tên sản phẩm"
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textviewGiaMonHang"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="90dp"
+            android:paddingLeft="10dp"
             android:text="Giá"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textStyle="bold|italic" />
 
         <LinearLayout
             android:gravity="center"
