@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class RegisterActivity extends AppCompatActivity {
     TextView register;
-    EditText account, password, passwordRepeat;
+    EditText account, password, passwordRepeat, username, diachi, sodienthoai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        register = findViewById(R.id.register);
-        account = findViewById(R.id.textAccountRegister);
-        password = findViewById(R.id.textPasswordRegister);
-        passwordRepeat = findViewById(R.id.textRepeatPassword);
-
+        khaibao();
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,5 +113,14 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void khaibao(){
+        account = findViewById(R.id.textAccountRegister);
+        password = findViewById(R.id.textPasswordRegister);
+        passwordRepeat = findViewById(R.id.textRepeatPassword);
+        register = findViewById(R.id.register);
+        username = findViewById(R.id.userNameInfor);
+        diachi = findViewById(R.id.address);
+        sodienthoai = findViewById(R.id.phoneNumber);
     }
 }

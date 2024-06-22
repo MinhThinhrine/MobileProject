@@ -9,13 +9,13 @@
     >
 
     <TextView
-        android:id="@+id/titleLogin"
+        android:id="@+id/titleForgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:fontFamily="sans-serif"
-        android:text="Đăng nhập"
+        android:text="Quên mật khẩu"
         android:textColor="@color/black"
         android:textSize="48sp"
         android:textStyle="bold" />
@@ -46,60 +46,20 @@
                 android:textColor="@color/black"
                 android:textSize="16dp" />
 
-            <EditText
-                android:id="@+id/edtPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/boder_edit_text"
-                android:hint="Mật khẩu"
-                android:inputType="textPassword"
-                android:paddingHorizontal="15dp"
-                android:paddingVertical="12dp"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
-        </LinearLayout>
-
-
             <TextView
                 android:layout_marginTop="50dp"
-                android:id="@+id/login"
+                android:id="@+id/xacnhan"
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_admin"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="10dp"
-                android:text="Đăng nhập"
+                android:text="Xác Nhận"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/register_account"
-            android:layout_width="148dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/button_admin"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:paddingTop="10px"
-            android:text="Đăng kí"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Quên mật khẩu ?"
-            android:textColor="@color/black"
-            android:textStyle="italic" />
     </LinearLayout>
 </RelativeLayout>

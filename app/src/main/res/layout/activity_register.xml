@@ -33,6 +33,19 @@
             android:background="@drawable/boder"
             android:orientation="vertical"
             android:padding="50px">
+            
+            <EditText
+                android:id="@+id/userNameInfor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20px"
+                android:background="@drawable/boder_edit_text"
+                android:hint="Tên đăng nhập"
+                android:inputType="textEmailAddress"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
 
             <EditText
                 android:id="@+id/textAccountRegister"
@@ -42,6 +55,32 @@
                 android:background="@drawable/boder_edit_text"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/phoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20px"
+                android:background="@drawable/boder_edit_text"
+                android:hint="Số điện thoại"
+                android:inputType="number"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20px"
+                android:background="@drawable/boder_edit_text"
+                android:hint="Địa chỉ"
+                android:inputType="number"
                 android:paddingHorizontal="15dp"
                 android:paddingVertical="10dp"
                 android:textColor="@color/black"
@@ -64,7 +103,6 @@
                 android:id="@+id/textRepeatPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20px"
                 android:background="@drawable/boder_edit_text"
                 android:hint="Nhập lại mật khẩu"
                 android:inputType="textPassword"
@@ -73,17 +111,6 @@
                 android:textColor="@color/black"
                 android:textSize="16dp" />
 
-            <EditText
-                android:id="@+id/phoneNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/boder_edit_text"
-                android:hint="Số điện thoại"
-                android:inputType="number"
-                android:paddingHorizontal="15dp"
-                android:paddingVertical="10dp"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
