@@ -1,5 +1,6 @@
 package com.example.appbanthietbidientu.Activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -24,8 +25,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class RegisterActivity extends AppCompatActivity {
     TextView register;
+    TextView backLogin;
     EditText account, password, passwordRepeat;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +36,18 @@ public class RegisterActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
+        backLogin = findViewById(R.id.quaylailogin);
         register = findViewById(R.id.register);
         account = findViewById(R.id.textAccountRegister);
         password = findViewById(R.id.textPasswordRegister);
         passwordRepeat = findViewById(R.id.textRepeatPassword);
 
+        backLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
