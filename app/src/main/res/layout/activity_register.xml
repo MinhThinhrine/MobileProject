@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/boder"
     android:orientation="vertical"
-    tools:context=".Activity.RegisterActivity">
+    tools:context=".Activity.ForgotPassWord">
 
     <TextView
         android:id="@+id/titleLogin"
@@ -80,7 +80,7 @@
                 android:layout_marginBottom="20px"
                 android:background="@drawable/boder_edit_text"
                 android:hint="Địa chỉ"
-                android:inputType="number"
+                android:inputType="text"
                 android:paddingHorizontal="15dp"
                 android:paddingVertical="10dp"
                 android:textColor="@color/black"

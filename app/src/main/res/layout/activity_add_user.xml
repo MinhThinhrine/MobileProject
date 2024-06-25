@@ -77,7 +77,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newE" />
 
-
     <EditText
         android:padding="10dp"
         android:drawablePadding="12dp"
@@ -95,6 +94,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newP1" />
 
+    <EditText
+        android:padding="10dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@drawable/ic_action_contact"
+        android:id="@+id/sdtaddUser"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:hint="Nhập số điện thoại"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newP2" />
+
+    <EditText
+        android:padding="10dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@android:drawable/ic_menu_mapmode"
+        android:id="@+id/adrUser"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:hint="Nhập địa chỉ"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sdtaddUser" />
+
+    <EditText
+        android:padding="10dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@android:drawable/sym_contact_card"
+        android:id="@+id/tennguoidung"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:hint="Nhập tên người dùng"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adrUser" />
+
+
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="0dp"
@@ -106,7 +157,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513">
+        app:layout_constraintVertical_bias="0.878">
 
         <RadioButton
             android:id="@+id/checkRole1"
@@ -126,11 +177,12 @@
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_admin"
         android:text="Thêm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:layout_constraintVertical_bias="0.0"

@@ -15,20 +15,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appbanthietbidientu.R;
-import com.example.appbanthietbidientu.response.SignInResponse;
-import com.example.appbanthietbidientu.ultil.ApiSp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     TextView titleLogin, registerAccount, forgotPassword;
@@ -109,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, forgot.class);
+                Intent intent = new Intent(LoginActivity.this, ForgotPassWord.class);
                 startActivity(intent);
             }
         });

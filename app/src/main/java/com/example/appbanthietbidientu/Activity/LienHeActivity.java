@@ -27,7 +27,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 public class LienHeActivity extends BaseFunctionActivity {
     Toolbar toolbarLienHe;
-    TextView txtNameUser,txtPhoneUser,txtEmailUser;
+    TextView txtNameUser,txtPhoneUser,txtEmailUser,Map;
     LinearLayout contact;
     RelativeLayout layoutContact;
     LinearLayout callNow,messNow;
@@ -75,6 +75,12 @@ public class LienHeActivity extends BaseFunctionActivity {
             }
         });
 
+        Map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LienHeActivity.this,ThongTinActivity.class));
+            }
+        });
         callNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,5 +142,6 @@ public class LienHeActivity extends BaseFunctionActivity {
         messNow = findViewById(R.id.messNow);
         contactHuy = findViewById(R.id.contactHuy);
         bgCoverLienHe = findViewById(R.id.bgCoverLienHe);
+        Map = findViewById(R.id.txtMap);
     }
 }

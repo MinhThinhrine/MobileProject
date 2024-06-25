@@ -41,10 +41,13 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String strAccount = account.getText().toString().trim();
-                String strPassword = password.getText().toString();
-                String strPasswordRepeat = passwordRepeat.getText().toString();
+                String strPassword = password.getText().toString().trim();
+                String strPasswordRepeat = passwordRepeat.getText().toString().trim();
+                String strUsername = username.getText().toString().trim();
+                String strDiachi = diachi.getText().toString().trim();
+                String strPhone = sodienthoai.getText().toString().trim();
 
-                if (strAccount.isEmpty() || strPassword.isEmpty() || strPasswordRepeat.isEmpty()) {
+                if (strAccount.isEmpty() || strPassword.isEmpty() || strPasswordRepeat.isEmpty() || strUsername.isEmpty() || strDiachi.isEmpty() || strPhone.isEmpty()) {
                     Toast.makeText(RegisterActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(strAccount).matches()) {
                     Toast.makeText(RegisterActivity.this, "Vui lòng nhập lại Email", Toast.LENGTH_SHORT).show();
@@ -53,64 +56,74 @@ public class RegisterActivity extends AppCompatActivity {
                 } else if (!strPassword.equals(strPasswordRepeat)) {
                     Toast.makeText(RegisterActivity.this, "Mật khẩu nhập lại không đúng", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Khởi tạo Firebase
                     FirebaseDatabase firebase = FirebaseDatabase.getInstance();
                     DatabaseReference ref = firebase.getReference("User");
 
-                    // Lấy ID của user mới nhất từ Firebase
-                    ref.orderByKey().limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+                    // Kiểm tra xem tài khoản đã tồn tại chưa
+                    ref.orderByChild("email").equalTo(strAccount).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            // Kiểm tra xem có dữ liệu trả về không
                             if (snapshot.exists()) {
-                                // Lặp qua tất cả các children để lấy ID của user cuối cùng
-                                String latestUserId = "";
-                                for (DataSnapshot child : snapshot.getChildren()) {
-                                    latestUserId = child.getKey();
-                                }
-
-                                // Chuyển đổi latestUserId thành kiểu int (nếu cần)
-                                int newUserId = Integer.parseInt(latestUserId) + 1;
-
-                                // Tạo đối tượng User
-                                User user = new User(strAccount, strPassword, newUserId,"user");
-
-                                ref.child(String.valueOf(newUserId)).setValue(user)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    Toast.makeText(RegisterActivity.this, "Đã đăng kí tài khoản thành công", Toast.LENGTH_SHORT).show();
-                                                    account.setText("");
-                                                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-                                                } else {
-                                                    Toast.makeText(RegisterActivity.this, "Lỗi khi lưu user", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        });
+                                // Email đã tồn tại
+                                Toast.makeText(RegisterActivity.this, "Tài khoản đã được đăng ký", Toast.LENGTH_SHORT).show();
                             } else {
-                                int newUserId = 1;
-                                User user = new User(strAccount, strPassword, newUserId,"user");
-                                ref.child(String.valueOf(newUserId)).setValue(user)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    Toast.makeText(RegisterActivity.this, "Đã đăng kí tài khoản thành công", Toast.LENGTH_SHORT).show();
-                                                    account.setText(""); // Xóa EditText sau khi lưu thành công
-                                                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-
-                                                } else {
-                                                    Toast.makeText(RegisterActivity.this, "Lỗi khi lưu user", Toast.LENGTH_SHORT).show();
-                                                }
+                                // Email chưa tồn tại, tiến hành đăng ký
+                                ref.orderByKey().limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if (snapshot.exists()) {
+                                            String latestUserId = "";
+                                            for (DataSnapshot child : snapshot.getChildren()) {
+                                                latestUserId = child.getKey();
                                             }
-                                        });
+
+                                            int newUserId = Integer.parseInt(latestUserId) + 1;
+                                            User user = new User(strAccount, strPassword, newUserId, strPhone, strDiachi, "user", strUsername);
+
+                                            ref.child(String.valueOf(newUserId)).setValue(user)
+                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if (task.isSuccessful()) {
+                                                                Toast.makeText(RegisterActivity.this, "Đã đăng kí tài khoản thành công", Toast.LENGTH_SHORT).show();
+                                                                account.setText("");
+                                                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                                            } else {
+                                                                Toast.makeText(RegisterActivity.this, "Lỗi khi lưu user", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
+                                                    });
+                                        } else {
+                                            int newUserId = 1;
+                                            User user = new User(strAccount, strPassword, newUserId, strPhone, strDiachi, "user", strUsername);
+
+                                            ref.child(String.valueOf(newUserId)).setValue(user)
+                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if (task.isSuccessful()) {
+                                                                Toast.makeText(RegisterActivity.this, "Đã đăng kí tài khoản thành công", Toast.LENGTH_SHORT).show();
+                                                                account.setText(""); // Xóa EditText sau khi lưu thành công
+                                                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                                            } else {
+                                                                Toast.makeText(RegisterActivity.this, "Lỗi khi lưu user", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
+                                                    });
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        Toast.makeText(RegisterActivity.this, "Lỗi khi lấy dữ liệu từ Firebase", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(RegisterActivity.this, "Lỗi khi lấy dữ liệu từ Firebase", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Lỗi khi kiểm tra tài khoản", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

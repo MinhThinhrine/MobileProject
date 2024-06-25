@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity{
                         startActivity(lienhe);
                         break;
                     case 4:
-                        Intent thongtin=new Intent(MainActivity.this,ThongTinActivity.class);
+                        Intent thongtin=new Intent(MainActivity.this, inforUser.class);
                         startActivity(thongtin);
                         break;
                     case 5:
@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity{
         loaispArrayList.add(1,new Loaisp(0,"Điện Thoại",R.drawable.ic_action_phone));
         loaispArrayList.add(2,new Loaisp(0,"Laptop",R.drawable.ic_action_laptop));
         loaispArrayList.add(3,new Loaisp(0,"Liên Hệ",R.drawable.ic_action_contact));
-        loaispArrayList.add(4,new Loaisp(0,"Thông Tin",R.drawable.ic_action_infor));
+        loaispArrayList.add(4,new Loaisp(0,"Thông Tin tài khoản",R.drawable.ic_action_infor));
         if(role.contains("admin")){
             loaispArrayList.add(5,new Loaisp(0,"Admin",R.drawable.icon_user_40));
         }
