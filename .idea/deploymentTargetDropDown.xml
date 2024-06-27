@@ -5,6 +5,9 @@
       <entry key="HomeAdmin">
         <State />
       </entry>
+      <entry key="ThongTinActivity">
+        <State />
+      </entry>
       <entry key="app">
         <State />
       </entry>
@@ -15,9 +18,6 @@
         <State />
       </entry>
       <entry key="test">
-        <State />
-      </entry>
-      <entry key="updateProduct">
         <State />
       </entry>
     </value>

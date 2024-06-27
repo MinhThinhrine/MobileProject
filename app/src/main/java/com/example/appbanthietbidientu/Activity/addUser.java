@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class addUser extends AppCompatActivity {
     EditText edt1,edt2,edt3;
+    EditText phone,adress,name;
     Button bntAdd;
     RadioGroup radioGroup;
     ImageView imgback;
@@ -40,11 +41,14 @@ public class addUser extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String email = edt1.getText().toString().trim();
-                String pass1 = edt1.getText().toString().trim();
-                String pass2 = edt1.getText().toString().trim();
+                String pass1 = edt2.getText().toString().trim();
+                String pass2 = edt3.getText().toString().trim();
+                String strPhone = phone.getText().toString().trim();
+                String strAdress = adress.getText().toString().trim();
+                String strName = name.getText().toString().trim();
                 String checked = getCheckedRadioButtonId();
 
-                if (email.isEmpty() || pass1.isEmpty() || pass2.isEmpty()) {
+                if (email.isEmpty() || pass1.isEmpty() || pass2.isEmpty() || strPhone.isEmpty() || strAdress.isEmpty() || strName.isEmpty()) {
                     Toast.makeText(addUser.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     Toast.makeText(addUser.this, "Vui lòng nhập lại Email", Toast.LENGTH_SHORT).show();
@@ -58,62 +62,82 @@ public class addUser extends AppCompatActivity {
                     FirebaseDatabase firebase = FirebaseDatabase.getInstance();
                     DatabaseReference ref = firebase.getReference("User");
 
-                    ref.orderByKey().limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+                    ref.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            // Kiểm tra xem có dữ liệu trả về không
-                            if (snapshot.exists()) {
-                                // Lặp qua tất cả các children để lấy ID của user cuối cùng
-                                String latestUserId = "";
-                                for (DataSnapshot child : snapshot.getChildren()) {
-                                    latestUserId = child.getKey();
-                                }
-
-                                // Chuyển đổi latestUserId thành kiểu int (nếu cần)
-                                int newUserId = Integer.parseInt(latestUserId) + 1;
-
-                                // Tạo đối tượng User
-                                User user = new User(email, pass1, newUserId,checked);
-
-                                ref.child(String.valueOf(newUserId)).setValue(user)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    Toast.makeText(addUser.this, "Đã đăng kí tài khoản thành công", Toast.LENGTH_SHORT).show();
-                                                    edt1.setText("");
-                                                    edt2.setText("");
-                                                    edt3.setText("");
-                                                } else {
-                                                    Toast.makeText(addUser.this, "Lỗi khi lưu user", Toast.LENGTH_SHORT).show();
-                                                }
+                            if(snapshot.exists()){
+                                Toast.makeText(addUser.this, "Tài khoản này đã tồn tại", Toast.LENGTH_SHORT).show();
+                            }else{
+                                ref.orderByKey().limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        // Kiểm tra xem có dữ liệu trả về không
+                                        if (snapshot.exists()) {
+                                            // Lặp qua tất cả các children để lấy ID của user cuối cùng
+                                            String latestUserId = "";
+                                            for (DataSnapshot child : snapshot.getChildren()) {
+                                                latestUserId = child.getKey();
                                             }
-                                        });
-                            } else {
-                                int newUserId = 1;
-                                User user = new User(email, pass1, newUserId,checked);
-                                ref.child(String.valueOf(newUserId)).setValue(user)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    Toast.makeText(addUser.this, "Đã đăng kí tài khoản thành công", Toast.LENGTH_SHORT).show();
-                                                    edt1.setText("");
-                                                    edt2.setText("");
-                                                    edt3.setText("");
-                                                    startActivity(new Intent(addUser.this,LoginActivity.class));
 
-                                                } else {
-                                                    Toast.makeText(addUser.this, "Lỗi khi lưu user", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        });
+                                            // Chuyển đổi latestUserId thành kiểu int (nếu cần)
+                                            int newUserId = Integer.parseInt(latestUserId) + 1;
+
+                                            // Tạo đối tượng User
+                                            User user = new User(email, pass1,newUserId,strPhone,strAdress,checked,strName);
+
+                                            ref.child(String.valueOf(newUserId)).setValue(user)
+                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if (task.isSuccessful()) {
+                                                                Toast.makeText(addUser.this, "Đã đăng kí tài khoản thành công", Toast.LENGTH_SHORT).show();
+                                                                edt1.setText("");
+                                                                edt2.setText("");
+                                                                edt3.setText("");
+                                                                phone.setText("");
+                                                                adress.setText("");
+                                                                name.setText("");
+                                                            } else {
+                                                                Toast.makeText(addUser.this, "Lỗi khi lưu user", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
+                                                    });
+                                        } else {
+                                            int newUserId = 1;
+                                            User user = new User(email, pass1, newUserId,checked);
+                                            ref.child(String.valueOf(newUserId)).setValue(user)
+                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if (task.isSuccessful()) {
+                                                                Toast.makeText(addUser.this, "Đã đăng kí tài khoản thành công", Toast.LENGTH_SHORT).show();
+                                                                edt1.setText("");
+                                                                edt2.setText("");
+                                                                edt3.setText("");
+                                                                phone.setText("");
+                                                                adress.setText("");
+                                                                name.setText("");
+                                                                startActivity(new Intent(addUser.this,LoginActivity.class));
+
+                                                            } else {
+                                                                Toast.makeText(addUser.this, "Lỗi khi lưu user", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
+                                                    });
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        Toast.makeText(addUser.this, "Lỗi khi lấy dữ liệu từ Firebase", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(addUser.this, "Lỗi khi lấy dữ liệu từ Firebase", Toast.LENGTH_SHORT).show();
+
                         }
                     });
                 }
@@ -149,6 +173,9 @@ public class addUser extends AppCompatActivity {
         edt1 = findViewById(R.id.newE);
         edt2 = findViewById(R.id.newP1);
         edt3 = findViewById(R.id.newP2);
+        phone = findViewById(R.id.sdtaddUser);
+        adress = findViewById(R.id.adrUser);
+        name = findViewById(R.id.tennguoidung);
         bntAdd = findViewById(R.id.buttonAdd);
         radioGroup = findViewById(R.id.radioGroup);
         imgback = findViewById(R.id.newimgBack);

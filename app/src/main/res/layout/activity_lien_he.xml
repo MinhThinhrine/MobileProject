@@ -122,6 +122,32 @@
                             android:textSize="16dp"
                             android:textStyle="bold" />
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="50dp"
+                        android:background="@drawable/background_diachi"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/diachi" />
+
+                        <TextView
+                            android:id="@+id/txtMap"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:gravity="center"
+                            android:text="Vị trí cửa hàng"
+                            android:textColor="#111"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

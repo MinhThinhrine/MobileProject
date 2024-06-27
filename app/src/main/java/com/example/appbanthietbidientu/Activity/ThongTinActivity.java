@@ -1,13 +1,15 @@
 package com.example.appbanthietbidientu.Activity;
 
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.databinding.ActivityThongTinBinding;
@@ -20,11 +22,12 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-
 public class ThongTinActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityThongTinBinding binding;
+
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +36,9 @@ public class ThongTinActivity extends FragmentActivity implements OnMapReadyCall
         binding = ActivityThongTinBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        overridePendingTransition(R.anim.animation_scale_enter_right,R.anim.animation_scale_exit_left);
+        overridePendingTransition(R.anim.animation_scale_enter_right, R.anim.animation_scale_exit_left);
 
         binding.backThongTin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +47,6 @@ public class ThongTinActivity extends FragmentActivity implements OnMapReadyCall
             }
         });
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -53,35 +55,52 @@ public class ThongTinActivity extends FragmentActivity implements OnMapReadyCall
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.animation_scale_enter_left,R.anim.animation_scale_exit_right);
+        overridePendingTransition(R.anim.animation_scale_enter_left, R.anim.animation_scale_exit_right);
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        //Bật nút zoom to,nhỏ
+        // Bật nút zoom
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
-        // Add a marker in Sydney and move the camera
-        LatLng bachKhoaHaNoi = new LatLng(21.005295366895293, 105.84464544417465);
-        mMap.addMarker(new MarkerOptions().position(bachKhoaHaNoi).title("NLU")
+        // Kiểm tra và yêu cầu quyền truy cập vị trí
+        checkLocationPermission();
+
+        // Thiết lập marker và di chuyển camera đến vị trí chỉ định
+        LatLng nhatrominhthinh = new LatLng(10.8694618, 106.7833163);
+        mMap.addMarker(new MarkerOptions().position(nhatrominhthinh).title("NLU")
                 .snippet("Tp.HCM")
                 .icon(BitmapDescriptorFactory.defaultMarker()));
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        CameraPosition cameraPosition=new CameraPosition.Builder()
-                .target(bachKhoaHaNoi)
-                .zoom(17)
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(nhatrominhthinh)
+                .zoom(12)
                 .build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
+
+    private void checkLocationPermission() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    LOCATION_PERMISSION_REQUEST_CODE);
+        } else {
+            // Quyền đã được cấp, tiếp tục làm việc với bản đồ
+            // Ví dụ: mMap.setMyLocationEnabled(true);
+        }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            } else {
+                Toast.makeText(this, "Ứng dụng cần quyền truy cập vị trí để hoạt động", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+}

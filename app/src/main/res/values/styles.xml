@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Định nghĩa các thuộc tính của theme -->
+    </style>
+
+    <!-- Định nghĩa style mới -->
+    <style name="Toolbar.TitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item> <!-- Đặt cỡ chữ -->
+        <item name="android:textColor">@android:color/white</item> <!-- Đặt màu chữ -->
+    </style>
+</resources>
