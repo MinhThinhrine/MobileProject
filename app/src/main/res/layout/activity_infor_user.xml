@@ -114,61 +114,62 @@
 
     <TextView
         android:id="@+id/thaydoithongtin"
-        android:layout_width="match_parent"
-        android:layout_height="83dp"
+        android:layout_width="316dp"
+        android:layout_height="73dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/background_diachi"
         android:gravity="center"
         android:text="Thay đổi thông tin"
-        android:textSize="30dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativLayout"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.277" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="44dp"
+        android:layout_width="45dp"
+        android:layout_height="37dp"
         android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/thaydoithongtin"
         app:layout_constraintEnd_toEndOf="@+id/thaydoithongtin"
-        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintHorizontal_bias="0.954"
         app:layout_constraintStart_toStartOf="@+id/thaydoithongtin"
         app:layout_constraintTop_toTopOf="@+id/thaydoithongtin"
-        app:layout_constraintVertical_bias="0.555"
+        app:layout_constraintVertical_bias="0.407"
         app:srcCompat="@drawable/nextbnt" />
 
     <TextView
         android:id="@+id/doimk"
-        android:layout_width="match_parent"
-        android:layout_height="83dp"
+        android:layout_width="316dp"
+        android:layout_height="73dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/background_diachi"
         android:gravity="center"
         android:text="Thay đổi mật khẩu"
-        android:textSize="30dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.383"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativLayout"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.7" />
 
     <ImageView
         android:id="@+id/bntdoimk"
-        android:layout_width="102dp"
-        android:layout_height="42dp"
+        android:layout_width="46dp"
+        android:layout_height="37dp"
         android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/doimk"
         app:layout_constraintEnd_toEndOf="@+id/doimk"
-        app:layout_constraintHorizontal_bias="0.959"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="@+id/doimk"
         app:layout_constraintTop_toTopOf="@+id/doimk"
-        app:layout_constraintVertical_bias="0.517"
+        app:layout_constraintVertical_bias="0.352"
         app:srcCompat="@drawable/nextbnt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

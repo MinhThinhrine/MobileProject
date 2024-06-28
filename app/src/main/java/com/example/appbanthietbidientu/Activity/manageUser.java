@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -128,6 +129,15 @@ public class manageUser extends AppCompatActivity {
                     }
                     }
                 });
+            }
+
+            @Override
+            public void updateUser(User user) {
+                Intent intent = new Intent(manageUser.this, updateUser.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("object_us",user);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }

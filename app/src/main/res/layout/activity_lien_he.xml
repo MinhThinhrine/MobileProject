@@ -64,7 +64,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:gravity="center"
-                            android:text="Tên: Mobile"
+                            android:text="Tên: Võ Minh Thinh"
                             android:textColor="#111"
                             android:textSize="20dp"
                             android:textStyle="bold" />
@@ -91,7 +91,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:gravity="center"
-                            android:text="123456789"
+                            android:text="0778377471"
                             android:textColor="#111"
                             android:textSize="20dp"
                             android:textStyle="bold" />
@@ -117,7 +117,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:gravity="center"
-                            android:text="nlu@st.hcmuaf.edu.vn"
+                            android:text="21130999@st.hcmuaf.edu.vn"
                             android:textColor="#111"
                             android:textSize="16dp"
                             android:textStyle="bold" />

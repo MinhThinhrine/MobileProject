@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -29,6 +31,7 @@ public class inforUser extends AppCompatActivity {
     private ImageView imagUser;
     private TextView iduser, emaiuser, nameUser, phoneUser, addUser, thaydoithongtin, doimk;
     private ImageView imageView, bntdoimk;
+    private int id;
     User user;
     SharedPreferences sharedPreferences;
     @Override
@@ -37,6 +40,33 @@ public class inforUser extends AppCompatActivity {
         setContentView(R.layout.activity_infor_user);
         anhxa();
         getData();
+
+
+
+        thaydoithongtin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(inforUser.this, newInforUser.class);
+                intent.putExtra("idUser",id);
+                startActivity(intent);
+            }
+        });
+
+        doimk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(inforUser.this, newPassWord.class);
+                intent.putExtra("idUser",id);
+                startActivity(intent);
+            }
+        });
+
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void getData() {
@@ -57,6 +87,7 @@ public class inforUser extends AppCompatActivity {
                 addUser.setText("Địa chỉ: "+user.getAddress());
                 nameUser.setText("Tên: "+user.getUserName());
                 emaiuser.setText("Email: "+user.getEmail());
+                id = user.getId();
             }
 
             @Override

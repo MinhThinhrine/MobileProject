@@ -239,17 +239,17 @@ public class MainActivity extends AppCompatActivity{
         sharedPreferences = getSharedPreferences("dataLogin", Context.MODE_PRIVATE);
         String role = sharedPreferences.getString("role","");
         String email = sharedPreferences.getString("email","");
-        Toast.makeText(this, "Role:"+role, Toast.LENGTH_SHORT).show();
         txtEmail.setText(email);
 
         loaispArrayList=new ArrayList<>();
-        loaispArrayList.add(0,new Loaisp(0,"Trang Chính",R.drawable.ic_action_home));
-        loaispArrayList.add(1,new Loaisp(0,"Điện Thoại",R.drawable.ic_action_phone));
+        loaispArrayList.add(0,new Loaisp(0,"Trang chính",R.drawable.ic_action_home));
+        loaispArrayList.add(1,new Loaisp(0,"Điện thoại",R.drawable.ic_action_phone));
         loaispArrayList.add(2,new Loaisp(0,"Laptop",R.drawable.ic_action_laptop));
-        loaispArrayList.add(3,new Loaisp(0,"Liên Hệ",R.drawable.ic_action_contact));
-        loaispArrayList.add(4,new Loaisp(0,"Thông Tin tài khoản",R.drawable.ic_action_infor));
+        loaispArrayList.add(3,new Loaisp(0,"Liên hệ",R.drawable.ic_action_contact));
+        loaispArrayList.add(4,new Loaisp(0,"Thông tin tài khoản",R.drawable.ic_action_infor));
         if(role.contains("admin")){
             loaispArrayList.add(5,new Loaisp(0,"Admin",R.drawable.icon_user_40));
+            Toast.makeText(this, "Role:"+role, Toast.LENGTH_SHORT).show();
         }
 
         LoaispAdapter loaispAdapter=new LoaispAdapter(loaispArrayList,MainActivity.this);
