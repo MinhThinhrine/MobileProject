@@ -42,10 +42,14 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.userHolder>{
                 adelete.deleteUser(user);
             }
         });
+
+        holder.suauser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adelete.updateUser(user);
+            }
+        });
     }
-//    private void OnclickgotoUpdateUser(User user){
-//
-//    }
 
     @Override
     public int getItemCount() {
@@ -55,13 +59,14 @@ public class userAdapter extends RecyclerView.Adapter<userAdapter.userHolder>{
     public class userHolder extends RecyclerView.ViewHolder{
 //        LinearLayout linearLayout;
         private TextView id,email;
-        private Button bntxoa;
+        private Button bntxoa,suauser;
         public userHolder(@NonNull View itemView) {
             super(itemView);
 //            linearLayout = itemView.findViewById(R.id.layout_user);
             bntxoa = itemView.findViewById(R.id.xoaUser);
             id = itemView.findViewById(R.id.iduser);
             email = itemView.findViewById(R.id.emaiuser);
+            suauser = itemView.findViewById(R.id.suauser);
         }
     }
 }

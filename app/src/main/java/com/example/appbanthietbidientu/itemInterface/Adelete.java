@@ -11,4 +11,8 @@ public abstract class Adelete implements IDelete{
     public void deleteUser(User user){
 
     }
+
+    public void updateUser(User user){
+
+    }
 }

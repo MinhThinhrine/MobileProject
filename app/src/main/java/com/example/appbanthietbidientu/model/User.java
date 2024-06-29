@@ -1,6 +1,8 @@
 package com.example.appbanthietbidientu.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     String email;
     String pass;
     int id;
@@ -83,5 +85,18 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", pass='" + pass + '\'' +
+                ", id=" + id +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", role='" + role + '\'' +
+                ", userName='" + userName + '\'' +
+                '}';
     }
 }

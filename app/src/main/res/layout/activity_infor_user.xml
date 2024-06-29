@@ -99,6 +99,7 @@
 
     <TextView
         android:id="@+id/thaydoithongtin"
+
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="30dp"
@@ -143,6 +144,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.383"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/thaydoithongtin" />
 

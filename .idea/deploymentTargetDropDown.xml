@@ -2,22 +2,10 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="HomeAdmin">
-        <State />
-      </entry>
-      <entry key="ThongTinActivity">
-        <State />
-      </entry>
       <entry key="app">
         <State />
       </entry>
-      <entry key="manageProduct">
-        <State />
-      </entry>
-      <entry key="manageUser">
-        <State />
-      </entry>
-      <entry key="test">
+      <entry key="inforUser">
         <State />
       </entry>
     </value>

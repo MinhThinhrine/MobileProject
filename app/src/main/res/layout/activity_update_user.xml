@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CCD8E1"
+    tools:context=".Activity.addUser">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarUpdateUser"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="102dp">
+
+        <TextView
+            android:id="@+id/toolbar_UDUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Sửa thông tin"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="135dp"
+            tools:layout_editor_absoluteY="9dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/newimgBackUDUser"
+        android:layout_width="61dp"
+        android:layout_height="42dp"
+        app:layout_constraintEnd_toStartOf="@+id/toolbarUpdateUser"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_action_back_black"
+        tools:ignore="MissingConstraints"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:padding="10dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@drawable/baseline_email_24"
+        android:background="@drawable/custom_input"
+        android:id="@+id/idUUser"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
+        android:textSize="18sp"
+        android:ems="10"
+        android:hint="Id người dùng"
+        android:inputType="text"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarUpdateUser" />
+
+    <TextView
+        android:padding="10dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@drawable/baseline_lock_24"
+        android:background="@drawable/custom_input"
+        android:id="@+id/EUUser"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:textSize="18sp"
+        android:hint="Email người dùng"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idUUser" />
+
+    <EditText
+        android:padding="10dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@drawable/ic_action_contact"
+        android:id="@+id/PhoneUUser"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:hint="Nhập số điện thoại"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EUUser" />
+
+    <EditText
+        android:padding="10dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@android:drawable/ic_menu_mapmode"
+        android:id="@+id/adrUser"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:hint="Nhập địa chỉ"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PhoneUUser" />
+
+    <EditText
+        android:padding="10dp"
+        android:drawablePadding="12dp"
+        android:drawableStart="@android:drawable/sym_contact_card"
+        android:id="@+id/nameUUser"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_input"
+        android:ems="10"
+        android:hint="Nhập tên người dùng"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adrUser" />
+
+
+    <RadioGroup
+        android:id="@+id/radioGroupUser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.754">
+
+        <RadioButton
+            android:id="@+id/checkRoleUUser1"
+            android:layout_width="75dp"
+            android:layout_height="66dp"
+            android:text="User" />
+
+        <RadioButton
+            android:id="@+id/checkRoleUUser2"
+            android:layout_width="wrap_content"
+            android:layout_height="66dp"
+            android:layout_marginStart="16dp"
+            android:text="Admin" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonUUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_admin"
+        android:text="Sửa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupUser"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
