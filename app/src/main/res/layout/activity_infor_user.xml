@@ -11,46 +11,30 @@
         android:id="@+id/titleUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/white"
         android:elevation="4dp"
+        android:gravity="center"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_action_back_black"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:title="Thông tin tài khoản"
-        app:titleTextColor="@android:color/white" />
-
-    <LinearLayout
-        android:id="@+id/layout_user"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bgr_item_adm"
-        android:elevation="8dp"
-        android:orientation="horizontal"
-        android:padding="4dp"
-        tools:layout_editor_absoluteX="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/titleUser"
-        android:layout_margin="4dp">
-    </LinearLayout>
+        app:titleTextColor="@color/black" />
 
     <RelativeLayout
         android:id="@+id/relativLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/background_diachi"
         android:elevation="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/layout_user"
-        tools:layout_editor_absoluteX="32dp">
-
-        <ImageView
-            android:id="@+id/imagUser"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/iconinfor" />
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagUser">
 
         <TextView
             android:id="@+id/iduser"
@@ -110,65 +94,110 @@
             android:text="Địa chỉ:"
             android:textSize="15dp"
             android:textStyle="bold" />
+
     </RelativeLayout>
 
     <TextView
         android:id="@+id/thaydoithongtin"
         android:layout_width="match_parent"
-        android:layout_height="83dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/background_diachi"
-        android:gravity="center"
+        android:gravity="center|left"
+        android:paddingLeft="50dp"
         android:text="Thay đổi thông tin"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativLayout"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintTop_toBottomOf="@+id/relativLayout" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="120dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/thaydoithongtin"
         app:layout_constraintEnd_toEndOf="@+id/thaydoithongtin"
-        app:layout_constraintHorizontal_bias="0.957"
-        app:layout_constraintStart_toStartOf="@+id/thaydoithongtin"
         app:layout_constraintTop_toTopOf="@+id/thaydoithongtin"
-        app:layout_constraintVertical_bias="0.555"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/nextbnt" />
 
     <TextView
         android:id="@+id/doimk"
         android:layout_width="match_parent"
-        android:layout_height="83dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/background_diachi"
-        android:gravity="center"
+        android:gravity="center|left"
+        android:paddingLeft="50dp"
         android:text="Thay đổi mật khẩu"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativLayout"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintTop_toBottomOf="@+id/thaydoithongtin" />
 
     <ImageView
         android:id="@+id/bntdoimk"
-        android:layout_width="102dp"
+        android:layout_width="120dp"
         android:layout_height="42dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/doimk"
         app:layout_constraintEnd_toEndOf="@+id/doimk"
-        app:layout_constraintHorizontal_bias="0.959"
-        app:layout_constraintStart_toStartOf="@+id/doimk"
         app:layout_constraintTop_toTopOf="@+id/doimk"
-        app:layout_constraintVertical_bias="0.517"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/nextbnt" />
+
+    <TextView
+        android:id="@+id/lichsu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/background_diachi"
+        android:gravity="center|left"
+        android:paddingLeft="50dp"
+        android:text="Lịch sử đơn hàng"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doimk" />
+
+    <ImageView
+        android:id="@+id/bntlichsu"
+        android:layout_width="120dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/lichsu"
+        app:layout_constraintEnd_toEndOf="@+id/lichsu"
+        app:layout_constraintTop_toTopOf="@+id/lichsu"
+        app:srcCompat="@drawable/nextbnt" />
+
+    <ImageView
+        android:id="@+id/imagUser"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/iconinfor"
+        app:layout_constraintBottom_toTopOf="@+id/relativLayout"
+        app:layout_constraintTop_toBottomOf="@+id/titleUser"
+        tools:layout_editor_absoluteX="155dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
