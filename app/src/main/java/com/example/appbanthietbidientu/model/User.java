@@ -86,4 +86,17 @@ public class User implements Serializable {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", pass='" + pass + '\'' +
+                ", id=" + id +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", role='" + role + '\'' +
+                ", userName='" + userName + '\'' +
+                '}';
+    }
 }
