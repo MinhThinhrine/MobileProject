@@ -6,36 +6,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.appbanthietbidientu.R;
-import com.example.appbanthietbidientu.model.GioHang;
+import com.example.appbanthietbidientu.model.Lichsu_donhang;
 import com.example.appbanthietbidientu.model.Sanpham;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
-public class LichsudhAdapter extends BaseAdapter {
-    private List<GioHang> gioHangList;
+public class ListDhAdapter extends BaseAdapter {
+    private List<Lichsu_donhang> lsList;
     Context context;
 
-    public LichsudhAdapter(List<GioHang> gioHangList, Context context) {
-        this.gioHangList = gioHangList;
+    public ListDhAdapter(List<Lichsu_donhang> lsList, Context context) {
+        this.lsList = lsList;
         this.context = context;
     }
+
     @Override
     public int getCount() {
-        return gioHangList.size();
+        return lsList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return gioHangList.get(i);
+        return lsList.get(i);
     }
 
     @Override
@@ -63,17 +61,29 @@ public class LichsudhAdapter extends BaseAdapter {
         }else{
             viewHolder= (ViewHolder) view.getTag();
         }
-        GioHang dienThoai=gioHangList.get(i);
-        viewHolder.tenDienThoai.setText(dienThoai.getTensp());
+        Lichsu_donhang lsdh = lsList.get(0); // Lấy sản phẩm đầu tiên trong danh sách lsList
+
+// Lấy thông tin từ gioHangArrayList của lsdh
+        String tenDienThoai = lsdh.getGioHangArrayList().get(0).getTensp(); // Lấy tên sản phẩm
+        int soluongsp = lsdh.getGioHangArrayList().get(0).getSoluongsp(); // Lấy số lượng sản phẩm
+        long giasp = lsdh.getGioHangArrayList().get(0).getGiasp(); // Lấy giá sản phẩm
+
+// Hiển thị thông tin lên các thành phần giao diện
+        viewHolder.tenDienThoai.setText(tenDienThoai);
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        viewHolder.giaDienThoai.setText("Tổng tiền: " + decimalFormat.format(dienThoai.getGiasp()) + "₫");
+        viewHolder.giaDienThoai.setText("Tổng tiền: " + decimalFormat.format(giasp) + "₫");
         viewHolder.motaDienThoai.setMaxLines(2);
         viewHolder.motaDienThoai.setEllipsize(TextUtils.TruncateAt.END);
-        viewHolder.motaDienThoai.setText(dienThoai.getSoluongsp());
-        Picasso.with(context).load(dienThoai.getHinhsp())
+        viewHolder.motaDienThoai.setText("Số lượng: " + soluongsp); // Hiển thị số lượng sản phẩm
+
+// Load hình ảnh sử dụng Picasso
+        Picasso.with(context)
+                .load(lsdh.getGioHangArrayList().get(0).getHinhsp())
                 .placeholder(R.drawable.loadimage)
                 .error(R.drawable.errorimage)
                 .into(viewHolder.hinhAnhDienThoai);
+
         return view;
+
     }
 }

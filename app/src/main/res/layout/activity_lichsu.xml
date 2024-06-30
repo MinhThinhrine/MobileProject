@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/addtoolbar3"
+        android:id="@+id/toolchitietls"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:minHeight="?attr/actionBarSize"
@@ -31,7 +31,7 @@
         android:id="@+id/newimgBack"
         android:layout_width="61dp"
         android:layout_height="42dp"
-        app:layout_constraintEnd_toStartOf="@+id/addtoolbar3"
+        app:layout_constraintEnd_toStartOf="@+id/toolchitietls"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_action_back_black"

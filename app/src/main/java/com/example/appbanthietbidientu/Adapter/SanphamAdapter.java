@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.appbanthietbidientu.R;
+import com.example.appbanthietbidientu.model.GioHang;
 import com.example.appbanthietbidientu.model.Sanpham;
 import com.squareup.picasso.Picasso;
 
@@ -21,6 +22,7 @@ import java.util.List;
 
 public class SanphamAdapter extends BaseAdapter implements Filterable {
     private List<Sanpham> dienThoaiList,dienThoaioldList;
+    private List<GioHang> gioHangList;
     Context context;
 
     public SanphamAdapter(List<Sanpham> dienThoaiList, Context context) {
@@ -28,7 +30,10 @@ public class SanphamAdapter extends BaseAdapter implements Filterable {
         this.dienThoaioldList = dienThoaiList;
         this.context = context;
     }
-
+    public void GioHanggAdapter(List<GioHang> gioHangList, Context context) {
+        this.gioHangList = gioHangList;
+        this.context = context;
+    }
     @Override
     public int getCount() {
             return dienThoaiList.size();
