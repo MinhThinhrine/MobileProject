@@ -47,6 +47,7 @@
         tools:layout_editor_absoluteX="-204dp">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewLichSu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"

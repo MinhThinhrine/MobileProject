@@ -76,7 +76,7 @@
                 android:id="@+id/EmailKhachHang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="Địa chỉ"
                 android:inputType="text"
                 android:textColor="#111"
                 android:textSize="18sp"
