@@ -13,11 +13,6 @@
         android:layout_height="match_parent"
         app:cardCornerRadius="8dp">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="top|right"
-            android:src="@drawable/sign" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -174,7 +174,6 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.ECLAIR_MR1)
     private void ActionViewFlip() {
         ArrayList<String> mangQuangCao=new ArrayList<>();
         mangQuangCao.add("https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2024/06/banner/1920x450--1--1920x450.jpg");

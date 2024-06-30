@@ -30,7 +30,7 @@ public class inforUser extends AppCompatActivity {
     private RelativeLayout relativLayout;
     private ImageView imagUser;
     private TextView iduser, emaiuser, nameUser, phoneUser, addUser, thaydoithongtin, doimk;
-    private ImageView imageView, bntdoimk;
+    private ImageView imageView, bntdoimk, btnLichsu;
     private int id;
     User user;
     SharedPreferences sharedPreferences;
@@ -65,6 +65,14 @@ public class inforUser extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        btnLichsu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(inforUser.this, ListDonHangActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -113,5 +121,6 @@ public class inforUser extends AppCompatActivity {
         doimk = findViewById(R.id.doimk);
         imageView = findViewById(R.id.imageView);
         bntdoimk = findViewById(R.id.bntdoimk);
+        btnLichsu = findViewById(R.id.bntlichsu);
     }
 }
