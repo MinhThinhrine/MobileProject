@@ -14,6 +14,7 @@ import com.example.appbanthietbidientu.Adapter.ListDhAdapter;
 import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.model.Lichsu_donhang;
 import com.example.appbanthietbidientu.ultil.BaseFunctionActivity;
+import com.example.appbanthietbidientu.ultil.CheckConnect;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,21 +30,25 @@ public class ListDonHangActivity extends BaseFunctionActivity {
     ArrayList<Lichsu_donhang> lichsuArrayList;
     ListDhAdapter lichsuAdapter;
     public void removeLichsuDonhang(Lichsu_donhang lsdh) {
+
         lichsuArrayList.remove(lsdh);
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lichsu);
+        if(CheckConnect.haveNetworkConnected(getApplicationContext())){
             Khaibao();
             ActionBar();
             getData();
+        }else {
+            CheckConnect.ShowToast_Short(getApplicationContext(),"Error Connect Internet");
+        }
         listViewlichsu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(), ChitietDonHang.class);
-                intent.putExtra("thongtindonhang", (CharSequence) lichsuArrayList.get(i));
+                intent.putExtra("thongtindonhang", lichsuArrayList.get(i));
                 startActivity(intent);
             }
         });
@@ -80,7 +85,6 @@ public class ListDonHangActivity extends BaseFunctionActivity {
 
 
     private void ActionBar() {
-        setSupportActionBar(toolbarlichsu);
         toolbarlichsu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,8 +94,8 @@ public class ListDonHangActivity extends BaseFunctionActivity {
     }
 
     private void Khaibao() {
-        toolbarlichsu = findViewById(R.id.toolchitietls);
-        listViewlichsu = findViewById(R.id.recyclerViewLichSu);
-        lichsuArrayList = new ArrayList<Lichsu_donhang>();
+        toolbarlichsu = findViewById(R.id.toolchitietlsdh);
+        listViewlichsu = findViewById(R.id.listLsdh);
+        lichsuArrayList = new ArrayList<>();
     }
 }

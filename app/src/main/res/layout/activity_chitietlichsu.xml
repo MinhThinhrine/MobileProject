@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolchitietls"
+        android:id="@+id/toolchitietlsdh"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:minHeight="?attr/actionBarSize"
@@ -30,7 +30,7 @@
         android:id="@+id/newimgBack"
         android:layout_width="61dp"
         android:layout_height="42dp"
-        app:layout_constraintEnd_toStartOf="@+id/toolchitietls"
+        app:layout_constraintEnd_toStartOf="@+id/toolchitietlsdh"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_action_back_black"
@@ -47,19 +47,6 @@
         android:background="#F3F3F3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="85dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="170dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/madonhang"
@@ -92,11 +79,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
             android:text="Ngày đặt hàng:"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/madonhang" />
 
@@ -104,12 +89,11 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="Thông tin đặt hàng"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-            tools:layout_editor_absoluteX="10dp" />
+            tools:layout_editor_absoluteX="10dp"
+            tools:layout_editor_absoluteY="472dp" />
 
         <TextView
             android:id="@+id/textView8"
@@ -177,6 +161,16 @@
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/diachigiaohang" />
+
+        <ListView
+            android:id="@+id/recyclerView"
+            android:layout_width="409dp"
+            android:layout_height="391dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
+            app:layout_constraintTop_toBottomOf="@+id/ngaydathang"
+            tools:layout_editor_absoluteX="1dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView

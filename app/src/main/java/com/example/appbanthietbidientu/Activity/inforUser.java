@@ -64,7 +64,8 @@ public class inforUser extends AppCompatActivity {
         toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(inforUser.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -7,6 +7,9 @@ public class GioHang {
     public String hinhsp;
     public int soluongsp;
 
+    public GioHang() {
+    }
+
     public GioHang(int idsp, String tensp, long giasp, String hinhsp, int soluongsp) {
         this.idsp = idsp;
         this.tensp = tensp;

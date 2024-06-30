@@ -22,16 +22,11 @@ import java.util.List;
 
 public class SanphamAdapter extends BaseAdapter implements Filterable {
     private List<Sanpham> dienThoaiList,dienThoaioldList;
-    private List<GioHang> gioHangList;
     Context context;
 
     public SanphamAdapter(List<Sanpham> dienThoaiList, Context context) {
         this.dienThoaiList = dienThoaiList;
         this.dienThoaioldList = dienThoaiList;
-        this.context = context;
-    }
-    public void GioHanggAdapter(List<GioHang> gioHangList, Context context) {
-        this.gioHangList = gioHangList;
         this.context = context;
     }
     @Override
@@ -46,7 +41,7 @@ public class SanphamAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override

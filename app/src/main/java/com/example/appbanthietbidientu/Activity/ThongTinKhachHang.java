@@ -101,7 +101,7 @@ public class ThongTinKhachHang extends AppCompatActivity {
                             startActivity(intent);
                             Toast.makeText(getApplicationContext(), "Cảm ơn bạn đã mua hàng", Toast.LENGTH_LONG).show();
                         } else {
-                            int lateOrderINT = 1;
+                            int lateOrderINT = 0;
                             ArrayList<GioHang> list = MainActivity.gioHangArrayList;
                             Lichsu_donhang lichsu_donhang = new Lichsu_donhang(
                                     String.valueOf(lateOrderINT),

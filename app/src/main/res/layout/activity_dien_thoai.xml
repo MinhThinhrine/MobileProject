@@ -15,11 +15,14 @@
         android:background="@color/white"
         app:title="Điện Thoại"
         app:titleTextColor="@color/black" />
+
     <ListView
         android:id="@+id/listviewDienThoai"
-        android:layout_below="@+id/ToolbarDienThoai"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ToolbarDienThoai"
+        android:layout_marginTop="0dp" />
+
     <ProgressBar
         android:id="@+id/loadDienThoai"
         android:layout_centerInParent="true"

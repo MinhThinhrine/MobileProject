@@ -1,16 +1,17 @@
 package com.example.appbanthietbidientu.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Lichsu_donhang {
-        private String maDonHang;
-        private ArrayList<GioHang> gioHangArrayList;
-        private String maKhachHang;
-        private String tenKhachHang;
-        private String ngayDatHang;
-        private String tongTien;
-        private String trangThaiDonHang;
-        private String diaChiGiaoHang;
+public class Lichsu_donhang implements Serializable {
+         String maDonHang;
+         ArrayList<GioHang> gioHangArrayList;
+         String maKhachHang;
+         String tenKhachHang;
+         String ngayDatHang;
+         String tongTien;
+         String trangThaiDonHang;
+         String diaChiGiaoHang;
 
     public Lichsu_donhang() {
     }
