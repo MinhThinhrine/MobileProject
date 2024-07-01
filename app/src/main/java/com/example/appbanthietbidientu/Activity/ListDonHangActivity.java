@@ -29,10 +29,6 @@ public class ListDonHangActivity extends BaseFunctionActivity {
     ListView listViewlichsu;
     ArrayList<Lichsu_donhang> lichsuArrayList;
     ListDhAdapter lichsuAdapter;
-    public void removeLichsuDonhang(Lichsu_donhang lsdh) {
-
-        lichsuArrayList.remove(lsdh);
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

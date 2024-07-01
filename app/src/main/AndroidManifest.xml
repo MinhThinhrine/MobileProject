@@ -23,6 +23,8 @@
         android:theme="@style/Theme.AppBanThietBiDienTu"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity android:name=".Activity.ChitietDonHang"
+            android:exported="false"/>
         <activity
             android:name=".Activity.manageOder"
             android:exported="false" />

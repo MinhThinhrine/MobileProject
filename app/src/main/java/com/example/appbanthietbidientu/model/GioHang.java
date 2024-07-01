@@ -1,6 +1,8 @@
 package com.example.appbanthietbidientu.model;
 
-public class GioHang {
+import java.io.Serializable;
+
+public class GioHang implements Serializable {
     public int idsp;
     public String tensp;
     public long giasp;
