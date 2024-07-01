@@ -76,6 +76,15 @@ public class HomeAdmin extends AppCompatActivity {
                         editor.apply();
                         startActivity(new Intent(HomeAdmin.this,manageProduct.class));
                         break;
+                    case 4:
+//                        editor.putString("sanp","sanphammoi");
+//                        editor.putString("title", "Sản phẩm mới ");
+//                        editor.apply();
+                        startActivity(new Intent(HomeAdmin.this,manageProduct.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(HomeAdmin.this,MainActivity.class));
+                        break;
                 }
             }
         });
@@ -91,8 +100,8 @@ public class HomeAdmin extends AppCompatActivity {
         itemAdmins.add(new Item_admin(R.drawable.ic_action_phone, "Sản phẩm Điện thoại"));
         itemAdmins.add(new Item_admin(R.drawable.ic_action_laptop, "Sản phẩm Laptop"));
         itemAdmins.add(new Item_admin(R.drawable.ic_action_giohang, "Sản phẩm mới"));
-        itemAdmins.add(new Item_admin(R.drawable.ic_action_giohang, "Sản phẩm mới"));
-        itemAdmins.add(new Item_admin(R.drawable.ic_action_giohang, "Sản phẩm mới"));
+        itemAdmins.add(new Item_admin(R.drawable.ic_action_giohang, "Quản lý đơn hàng"));
+        itemAdmins.add(new Item_admin(R.drawable.ic_action_home, "Trang chủ "));
 
 
     }
