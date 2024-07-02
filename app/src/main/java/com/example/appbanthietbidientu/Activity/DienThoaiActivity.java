@@ -21,7 +21,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.appbanthietbidientu.Adapter.SanphamAdapter;
 import com.example.appbanthietbidientu.R;
 import com.example.appbanthietbidientu.model.Sanpham;
-import com.example.appbanthietbidientu.ultil.ApiSp;
 import com.example.appbanthietbidientu.ultil.BaseFunctionActivity;
 import com.example.appbanthietbidientu.ultil.CheckConnect;
 import com.google.firebase.database.DataSnapshot;
@@ -31,11 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class DienThoaiActivity extends BaseFunctionActivity {
     SearchView searchView;

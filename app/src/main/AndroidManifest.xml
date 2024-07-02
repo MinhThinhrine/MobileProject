@@ -27,7 +27,11 @@
             android:exported="false"/>
         <activity
             android:name=".Activity.manageOder"
-            android:exported="false" />
+            android:exported="true" />
+        <activity android:name=".Activity.AdminCTDH"
+            android:exported="true"
+            ></activity>
+
         <activity
             android:name=".Activity.ListDonHangActivity"
             android:exported="true" />

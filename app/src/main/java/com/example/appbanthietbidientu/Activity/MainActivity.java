@@ -49,11 +49,7 @@ import com.squareup.picasso.Picasso;
 
 import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
-import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity{
     DrawerLayout drawerLayout;

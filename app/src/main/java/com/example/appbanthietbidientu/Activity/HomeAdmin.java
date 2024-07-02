@@ -80,7 +80,7 @@ public class HomeAdmin extends AppCompatActivity {
 //                        editor.putString("sanp","sanphammoi");
 //                        editor.putString("title", "Sản phẩm mới ");
 //                        editor.apply();
-                        startActivity(new Intent(HomeAdmin.this,manageProduct.class));
+                        startActivity(new Intent(HomeAdmin.this,manageOder.class));
                         break;
                     case 5:
                         startActivity(new Intent(HomeAdmin.this,MainActivity.class));
